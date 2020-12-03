@@ -1,0 +1,96 @@
+---
+title: "first_rmd"
+output:
+  html_document:
+    toc: TRUE
+    code_folding: hide
+---
+
+`echo = FALSE` prevents printing of the R code<br>
+Insert comment: `Ctrl + Shift + C`<br>
+Knit Rmd document: `Ctrl + Shift + K`<br>
+New code chunk: `Ctrl + Alt + I`<br>
+Reformat code: `Ctrl + Shift + A`<br>
+Pipe operator `Ctrl + Shift + M`<br>
+
+
+
+## R Markdown
+### Next header level
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+
+#install.packages("librarian")
+# librarian::lib_startup(librarian, global = TRUE)
+
+#install.packages("dplyr")
+#install.packages("ggplot2")
+#install.packages("tidyverse")
+# library(librarian)
+library(dplyr) #Datasets?
+library(ggplot2) #?
+library(tidyverse) #?
+#library(pander) # Asthetics for Rmd
+
+
+#remove.packages(pkgs=row.names(x=installed.packages(priority="NA"))) # Delete all user installed packages
+```
+
+```{r help, echo=FALSE, eval=FALSE}
+help(dplyr)
+```
+
+
+
+```{r pressure, echo=FALSE}
+plot(pressure)
+```
+
+
+```{r ds, echo=FALSE}
+ds <- read.csv("edidiv.csv")
+```
+
+```{r ds-explore}
+head(ds)
+tail(ds)
+str(ds)
+
+#ds$taxonGroup # displays all rows for this column
+head(ds$taxonGroup) # displays first few rows of single column
+
+dim(ds) # displays rows x columns
+summary(ds) # data summary
+summary(ds$year) # summary for single column
+```
+
+
+```{r calcs, echo=FALSE}
+beetle <- filter(ds, taxonGroup == "Beetle") # Filter for specific ("==") taxon group
+cnt <- length(unique(beetle$taxonName)) # Number of distinct taxon names in taxon group "Beetle"
+```
+
+```{r plot, echo=FALSE}
+a <- filter(ds, taxonGroup == "Bird") %>% 
+  unique() %>% 
+  length()
+
+b <- filter(ds, taxonGroup == "Dragonfly") %>% 
+  unique() %>% 
+  length()
+
+c <- filter(ds, taxonGroup == "Mammal") %>% 
+  unique() %>% 
+  length()
+
+d <- filter(ds, taxonGroup == "Fungus") %>% 
+  unique() %>% 
+  length()
+
+vectors <- c(a,b,c,d) # c stands for concatenate
+names(vectors) <- c("Bird", "Dragonfly", "Mammal", "Fungus")
+
+barplot(vectors)
+```
+
+

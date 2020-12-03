@@ -1,0 +1,99 @@
+---
+title: "db"
+output: 
+  html_document:
+    toc: FALSE
+---
+
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+
+```{r include=F}
+## Load packages
+library(DBI)
+library(RPostgres)
+library(here)
+library(glue)
+library(leaflet)
+library(lwgeom)
+library(dplyr)
+library(ggplot2)
+library(rmarkdown)
+library(DT)
+```
+
+
+## Database connection
+```{r dbconn, echo=T}
+conn <- DBI::dbConnect(
+  RPostgres::Postgres(),
+  dbname   = "personal",
+  host     = "localhost",
+  port     = 5432,
+  user     = "cgrant",
+  password = "Cougfan42!"
+)
+```
+
+
+## DB query
+```{r dbquery, layout="l-body-outset"}
+tbls <- dbListTables(conn)
+
+sql <- glue("SELECT * FROM sleepdata")
+res <- dbGetQuery(conn, sql)
+
+cols <- names(res)
+
+#paged_table(res, options=list(rows.print=10))
+
+datatable(res)
+```
+
+## Sleep quality
+```{r sleepquality, echo=T}
+plt1 <- ggplot(res, aes(x=start_time, y=sleep_quality)) +
+  geom_line(color="blue", size=1) +
+  ylab("Sleep Quality") +
+  xlab("Start Date")
+plt1
+```
+
+## Steps
+```{r steps, echo=T}
+plt2 <- ggplot(res, aes(x=start_time, y=steps)) +
+  geom_line(color="red", size=1) +
+  ylab("Steps") +
+  xlab("Start Date")
+plt2
+```
+
+## Sleep time
+```{r sleeptime, echo=T}
+plt3 <- ggplot(res, aes(x=start_time, y=(seconds_asleep / 60) / 60)) +
+  geom_line(color="purple", size=1) +
+  ylab("Hours Asleep") +
+  xlab("Start Date")
+plt3
+```
+
+## Movement
+```{r movement, echo=T}
+plt4 <- ggplot(res, aes(x=start_time, y=movements_per_hour)) +
+  geom_line(color="red", size=1) +
+  ylab("Movements per hour") +
+  xlab("Start Date")
+plt4
+```
+
+## Time until sleep
+```{r tts, echo=T}
+plt5 <- ggplot(res, aes(x=start_time, y=seconds_until_sleep / 60)) +
+  geom_line(color="red", size=1) +
+  ylab("Minutes until sleep") +
+  xlab("Start Date")
+plt5
+```

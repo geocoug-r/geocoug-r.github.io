@@ -1,0 +1,41 @@
+---
+title: "Concentration Basis Conversion"
+output:
+  html_document:
+    toc: TRUE
+    code_folding: hide
+editor_options:
+  chunk_output_type: console
+---
+
+<br>
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+
+```{r, include=F, eval=F}
+# https://www.rdocumentation.org/packages/OrgMassSpecR/versions/0.5-3/topics/ConvertConcentration
+# install.packages("OrgMassSpecR")
+library(OrgMassSpecR)
+
+x = ConvertConcentration(0.031, "wet.to.lipid", 95)
+x
+```
+
+### Wet
+> Wet weight (or as-is) basis means no calculation has been made to compensate for the moisture content of a sample
+
+### Dry
+> Dry weight basis means the lab has measured moisture content of a sample and calculated concentrations based on the percent solids present.
+
+
+### Wet to Dry
+$$DryWt = \frac{WetWt}{Percent Solids} * 100$$
+
+### Dry to Wet
+$$WetWt = \frac{DryWt * PercentSolids}{100}$$
+<center>**DryWt & WetWt** = concentration<br>
+**PercentSolids** = percentage (no decimal)</center>
+

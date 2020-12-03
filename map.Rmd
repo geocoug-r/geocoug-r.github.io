@@ -1,0 +1,25 @@
+---
+title: "map"
+output: 
+  html_document:
+    toc: FALSE
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+```{r include=F}
+library(leaflet)
+library(dplyr)
+```
+
+Use the leaflet map below to explore.
+```{r}
+leaflet() %>% 
+  setView(lng=-122.594488, lat=47.174515, zoom=16) %>% 
+  addTiles() %>% 
+  addMarkers(lng=-122.594488, lat=47.174515, popup="Home")
+```
+
+

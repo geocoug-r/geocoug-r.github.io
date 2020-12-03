@@ -1,0 +1,21 @@
+name: "first-website"
+navbar:
+  title: "My Website"
+  type: default #inverse
+  left:
+    - text: "Home"
+      href: index.html
+    - text: "Map"
+      href: map.html
+    - text: "Database"
+      href: db.html
+    - text: "Concentration Basis Conversion"
+      href: mass_conv.html
+output:
+  html_document:
+    theme: flatly
+    #css:
+    include:
+      #after_body: "footer.html"
+output_dir: "."
+  

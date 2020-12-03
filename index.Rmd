@@ -1,0 +1,29 @@
+---
+title: "index"
+output: 
+  html_document:
+    toc: TRUE
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+## _site.yml  
+
+[Source](https://rmarkdown.rstudio.com/lesson-13.html)  
+
+First, we create a `_site.yml` file which provides the global YAML header for the site.
+
+
+## index.Rmd
+Next, we create the site `index.Rmd`, which is the 'homepage' of the site.
+
+## render
+`rmarkdown::render_site()` will render your site
+
+## map
+Used `leaflet` and `dplyr` to create a map
+
+## database
+Databases...
