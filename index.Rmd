@@ -1,29 +1,112 @@
 ---
-title: "index"
-output: 
+title: "Home"
+output:
   html_document:
     toc: TRUE
+    #code_folding: hide
+editor_options:
+  chunk_output_type: console
 ---
 
 ```{r setup, include=FALSE}
 knitr::opts_chunk$set(echo = TRUE)
 ```
 
-## _site.yml  
+<br>
 
-[Source](https://rmarkdown.rstudio.com/lesson-13.html)  
+# References
 
-First, we create a `_site.yml` file which provides the global YAML header for the site.
+  - [R Markdown Reference Guide](https://bookdown.org/yihui/rmarkdown/)
+  - [Flexdashboard](https://rmarkdown.rstudio.com/flexdashboard/)
+
+<br>
+
+# Data
+
+  - [Awesome public datasets](https://github.com/awesomedata/awesome-public-datasets)
+  
+<br>
+
+# Markdown Syntax
+
+<br>
+
+# Other Languages
+
+## SQL
+
+### Option 1
+Create connection chunk, then call connection in each subsequent chunk.
+```{r}
+library(DBI)
+db = dbConnect(
+  RPostgres::Postgres(),
+  dbname   = "personal",
+  host     = "localhost",
+  port     = 5432,
+  user     = "cgrant",
+  password = "Cougfan42!"
+)
+```
+
+```{sql, connection=db}
+select * from sleepdata
+```
+
+### Option 2
+Set default connection in the setup chunk (pretend its the setup chunk).
+```{r setup-v2, eval=F}
+library(DBI)
+db = dbConnect(
+  RPostgres::Postgres(),
+  dbname   = "personal",
+  host     = "localhost",
+  port     = 5432,
+  user     = "cgrant",
+  password = "Cougfan42!"
+)
+knitr::opts_chunk$set(connection = "db")
+```
+
+Then you dont have to specify the connection for each chunk.
+```{sql, eval=F}
+select * from sleepdata
+```
+
+<br>
+
+## Python
+To use the Python engine, you need to call `library(reticulate)` [link](https://rstudio.github.io/reticulate/)
+```{r}
+# install.packages("reticulate")
+library(reticulate)
+
+# Use specific Python installation
+use_python("C:/Python37")
+
+# Use conda environment
+use_condaenv("dev")
+```
+
+Now you can run Python code
+```{python}
+x = 4 * 4
+print(x)
+```
+
+You can import libraries as normal
+```{python}
+import pandas as pd
+
+vals = {"col1": ['a', 'b', 'c', 'd'], "col2": [1, 10, 100, 1000]}
+df = pd.DataFrame(vals)
+```
+
+Access objects created within Python chunks from R using `py$<var>`
+```{r}
+library(DT)
+dt = datatable(py$df)
+dt
+```
 
 
-## index.Rmd
-Next, we create the site `index.Rmd`, which is the 'homepage' of the site.
-
-## render
-`rmarkdown::render_site()` will render your site
-
-## map
-Used `leaflet` and `dplyr` to create a map
-
-## database
-Databases...

@@ -1,0 +1,40 @@
+---
+title: "Dashboard"
+output: 
+  flexdashboard::flex_dashboard:
+    theme: flatly
+    navbar:
+      - { title: "Home", href: "./index.html", align: left, type: default}
+---
+
+[Reference](https://rmarkdown.rstudio.com/flexdashboard/using.html#overview)
+
+
+```{r, include=FALSE}
+library(flexdashboard)
+library(dygraphs)
+```
+
+Column {data-width=600}
+-------------------------------------
+    
+### Chart 1
+    
+```{r}
+dygraph(ldeaths)
+```
+   
+Column {data-width=400}
+-------------------------------------
+   
+### Chart 2
+
+```{r}
+dygraph(mdeaths)
+```   
+ 
+### Chart 3
+    
+```{r}
+dygraph(fdeaths)
+```

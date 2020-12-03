@@ -11,6 +11,8 @@ navbar:
       href: db.html
     - text: "Concentration Basis Conversion"
       href: mass_conv.html
+    - text: "Dashboard"
+      href: dashboard.html
 output:
   html_document:
     theme: flatly
