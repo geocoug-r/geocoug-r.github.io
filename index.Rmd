@@ -12,10 +12,37 @@ editor_options:
 knitr::opts_chunk$set(echo = TRUE)
 ```
 
+
+# Packages
+
+```{r pkgs, eval = F}
+if (!require(librarian)){
+  remotes::install_github("DesiQuintans/librarian")
+  library(librarian)
+}
+shelf(
+  # database
+  DBI, RPostgres,
+  # spatial
+  ggmap, leaflet, 
+  r-spatial/mapview, # https://github.com/r-spatial/mapview/issues/324
+  sf, sp,
+  # tidyverse
+  dplyr, purrr, readr, tibble, tidyr,
+  # todo: use these
+  # googledrive,
+  # report
+  DT, gt, htmltools, htmlwidgets, kableExtra, knitr, markdown, rmarkdown, shiny, webshot,
+  # utility
+  fs, glue, here, png, scales, stringr, urltools)
+here <- here::here
+```
+
 <br>
 
 # References
 
+  - [R Markdown Basics](https://rmarkdown.rstudio.com/authoring_basics.html)
   - [R Markdown Reference Guide](https://bookdown.org/yihui/rmarkdown/)
   - [Flexdashboard](https://rmarkdown.rstudio.com/flexdashboard/)
 
@@ -39,13 +66,16 @@ knitr::opts_chunk$set(echo = TRUE)
 Create connection chunk, then call connection in each subsequent chunk.
 ```{r}
 library(DBI)
+
+pass <- readLines("../../pwd.txt")
+
 db = dbConnect(
   RPostgres::Postgres(),
   dbname   = "personal",
   host     = "localhost",
   port     = 5432,
   user     = "cgrant",
-  password = "Cougfan42!"
+  password = pass
 )
 ```
 
@@ -63,7 +93,7 @@ db = dbConnect(
   host     = "localhost",
   port     = 5432,
   user     = "cgrant",
-  password = "Cougfan42!"
+  password = pass
 )
 knitr::opts_chunk$set(connection = "db")
 ```

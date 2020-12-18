@@ -28,19 +28,21 @@ library(DT)
 
 ## Database connection
 ```{r dbconn, echo=T}
+pass <- readLines("../../pwd.txt")
+
 conn <- DBI::dbConnect(
   RPostgres::Postgres(),
   dbname   = "personal",
   host     = "localhost",
   port     = 5432,
   user     = "cgrant",
-  password = "Cougfan42!"
+  password = pass
 )
 ```
 
 
 ## DB query
-```{r dbquery, layout="l-body-outset"}
+```{r dbquery, out.width="50%"}
 tbls <- dbListTables(conn)
 
 sql <- glue("SELECT * FROM sleepdata")
@@ -50,7 +52,14 @@ cols <- names(res)
 
 #paged_table(res, options=list(rows.print=10))
 
-datatable(res)
+datatable(res, 
+          extensions = 'FixedColumns', # freeze left most column in a scrolling datatable
+          options = list( # https://datatables.net/reference/option/
+            dom = 't', # Define table control elements to appear on page and in what order
+            scrollX = TRUE, # horizontal scrolling (scrollY = vertical scrolling)
+            scrollCollapse = TRUE # allow table to reduce in height when a limited number of rows are shown
+          )
+)
 ```
 
 ## Sleep quality

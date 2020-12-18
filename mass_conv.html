@@ -300,6 +300,12 @@ $(document).ready(function () {
 <li>
   <a href="dashboard.html">Dashboard</a>
 </li>
+<li>
+  <a href="sql_summary.html">SQL</a>
+</li>
+<li>
+  <a href="projects.html">Projects</a>
+</li>
       </ul>
       <ul class="nav navbar-nav navbar-right">
         
@@ -326,26 +332,37 @@ $(document).ready(function () {
 
 <div id="TOC">
 <ul>
-<li><a href="#wet">Wet</a></li>
-<li><a href="#dry">Dry</a></li>
+<li><a href="#wet-weight">Wet Weight</a></li>
+<li><a href="#dry-weight">Dry Weight</a></li>
+<li><a href="#conversions">Conversions</a><ul>
 <li><a href="#wet-to-dry">Wet to Dry</a></li>
 <li><a href="#dry-to-wet">Dry to Wet</a></li>
+</ul></li>
+<li><a href="#analytical-blanks">Analytical “Blanks”</a><ul>
+<li><a href="#trip-blank">Trip Blank</a></li>
+<li><a href="#field-blank">Field Blank</a></li>
+<li><a href="#laboratory-blank-method-or-instrument-blanks">Laboratory Blank (method or instrument blanks)</a></li>
+<li><a href="#reagent-blank">Reagent Blank</a></li>
+<li><a href="#diagram">Diagram</a></li>
+</ul></li>
 </ul>
 </div>
 
 <p><br></p>
-<div id="wet" class="section level3">
-<h3>Wet</h3>
+<div id="wet-weight" class="section level2">
+<h2>Wet Weight</h2>
 <blockquote>
 <p>Wet weight (or as-is) basis means no calculation has been made to compensate for the moisture content of a sample</p>
 </blockquote>
 </div>
-<div id="dry" class="section level3">
-<h3>Dry</h3>
+<div id="dry-weight" class="section level2">
+<h2>Dry Weight</h2>
 <blockquote>
 <p>Dry weight basis means the lab has measured moisture content of a sample and calculated concentrations based on the percent solids present.</p>
 </blockquote>
 </div>
+<div id="conversions" class="section level2">
+<h2>Conversions</h2>
 <div id="wet-to-dry" class="section level3">
 <h3>Wet to Dry</h3>
 <p><span class="math display">\[DryWt = \frac{WetWt}{Percent Solids} * 100\]</span></p>
@@ -356,6 +373,34 @@ $(document).ready(function () {
 <center>
 <strong>DryWt &amp; WetWt</strong> = concentration<br> <strong>PercentSolids</strong> = percentage (no decimal)
 </center>
+<p><br></p>
+</div>
+</div>
+<div id="analytical-blanks" class="section level2">
+<h2>Analytical “Blanks”</h2>
+<div id="trip-blank" class="section level3">
+<h3>Trip Blank</h3>
+<p>The trip blank is designed to identify levels of contamination from the exposure of the reagent or sorbent bed to the same atmospheres exposed to the analyte reagent or sorbent bed. The trip blank is prepared in the laboratory with the other reagents or adsorbents prior to shipping to the field. However, the trip blank is never exposed to the field atmospheres. It is simply sent along with the field samples to and from the site. The trip blank identified areas of exposure such as shipping temperatures and pressures, laboratory preparation of field samples and laboratory preparation of field samples for analysis.</p>
+</div>
+<div id="field-blank" class="section level3">
+<h3>Field Blank</h3>
+<p>The field blank is similar to the trip blank in that it is also prepared during the preparation of the field reagents or adsorbents. However, the field blank is exposed to the same atmospheres in the field as the field samples. This means that the field blank is opened during the charging of impingers or sorbents in the sample train. The field blank is also exposed during the exchanging of cartridges in SW-846, Method 0030 or when field reagents are being exchanged during a test run. In summary, field blanks consist of additional sample collection media (e.g., sorbent tubes, reagents, filters) which are transported to the monitoring site, exposed briefly at the site when the samples are exposed (but no stack gas is actually pulled through these blanks), and transported back to the laboratory for analysis, similar to a field sample. At least one field blank should be collected and analyzed for each test series.</p>
+</div>
+<div id="laboratory-blank-method-or-instrument-blanks" class="section level3">
+<h3>Laboratory Blank (method or instrument blanks)</h3>
+<p>The laboratory blank is a sample of the reagents or sorbents used during the sample train reagent preparation or recovery. The laboratory blank is a sample of the extraction solvent, the rinses used during sample recovery, or a sample from the batch of sorbent used to preparing sampling cartridges. Laboratory blanks include both method blanks and instrument blanks. Method blanks are carried through all steps of the measurement process (from extraction through analysis). A method blank is typically analyzed with each sample batch. Instrument blanks are used to demonstrate that an instrument system is free of contamination. Instrument blanks are typically analyzed prior to sample analysis and following the analysis of highly contaminated samples.</p>
+</div>
+<div id="reagent-blank" class="section level3">
+<h3>Reagent Blank</h3>
+<p>The reagent blank is a sample of the solvents used during recovery of the sample train after the test is completed. You recall, reagent blanks for both multi-metal and chromium +6 require that the reagent blank be the same volume as the renses used to recover the samples, from probe to impinger. This is because the blank value is substracted from the sample to obtain a final concentration.</p>
+</div>
+<div id="diagram" class="section level3">
+<h3>Diagram</h3>
+<div class="figure">
+<img src="static/blanks.PNG" alt="" />
+<p class="caption">blanks</p>
+</div>
+</div>
 </div>
 
 

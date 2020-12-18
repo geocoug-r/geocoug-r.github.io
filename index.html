@@ -304,6 +304,12 @@ $(document).ready(function () {
 <li>
   <a href="dashboard.html">Dashboard</a>
 </li>
+<li>
+  <a href="sql_summary.html">SQL</a>
+</li>
+<li>
+  <a href="projects.html">Projects</a>
+</li>
       </ul>
       <ul class="nav navbar-nav navbar-right">
         
@@ -322,6 +328,7 @@ $(document).ready(function () {
 
 <div id="TOC">
 <ul>
+<li><a href="#packages">Packages</a></li>
 <li><a href="#references">References</a></li>
 <li><a href="#data">Data</a></li>
 <li><a href="#markdown-syntax">Markdown Syntax</a></li>
@@ -335,10 +342,34 @@ $(document).ready(function () {
 </ul>
 </div>
 
+<div id="packages" class="section level1">
+<h1>Packages</h1>
+<pre class="r"><code>if (!require(librarian)){
+  remotes::install_github(&quot;DesiQuintans/librarian&quot;)
+  library(librarian)
+}
+shelf(
+  # database
+  DBI, RPostgres,
+  # spatial
+  ggmap, leaflet, 
+  r-spatial/mapview, # https://github.com/r-spatial/mapview/issues/324
+  sf, sp,
+  # tidyverse
+  dplyr, purrr, readr, tibble, tidyr,
+  # todo: use these
+  # googledrive,
+  # report
+  DT, gt, htmltools, htmlwidgets, kableExtra, knitr, markdown, rmarkdown, shiny, webshot,
+  # utility
+  fs, glue, here, png, scales, stringr, urltools)
+here &lt;- here::here</code></pre>
 <p><br></p>
+</div>
 <div id="references" class="section level1">
 <h1>References</h1>
 <ul>
+<li><a href="https://rmarkdown.rstudio.com/authoring_basics.html">R Markdown Basics</a></li>
 <li><a href="https://bookdown.org/yihui/rmarkdown/">R Markdown Reference Guide</a></li>
 <li><a href="https://rmarkdown.rstudio.com/flexdashboard/">Flexdashboard</a></li>
 </ul>
@@ -363,13 +394,17 @@ $(document).ready(function () {
 <h3>Option 1</h3>
 <p>Create connection chunk, then call connection in each subsequent chunk.</p>
 <pre class="r"><code>library(DBI)
-db = dbConnect(
+
+pass &lt;- readLines(&quot;../../pwd.txt&quot;)</code></pre>
+<pre><code>## Warning in readLines(&quot;../../pwd.txt&quot;): incomplete final line found on &#39;../../
+## pwd.txt&#39;</code></pre>
+<pre class="r"><code>db = dbConnect(
   RPostgres::Postgres(),
   dbname   = &quot;personal&quot;,
   host     = &quot;localhost&quot;,
   port     = 5432,
   user     = &quot;cgrant&quot;,
-  password = &quot;Cougfan42!&quot;
+  password = pass
 )</code></pre>
 <pre class="sql"><code>select * from sleepdata</code></pre>
 <div class="knitsql-table">
@@ -704,7 +739,7 @@ db = dbConnect(
   host     = &quot;localhost&quot;,
   port     = 5432,
   user     = &quot;cgrant&quot;,
-  password = &quot;Cougfan42!&quot;
+  password = pass
 )
 knitr::opts_chunk$set(connection = &quot;db&quot;)</code></pre>
 <p>Then you dont have to specify the connection for each chunk.</p>

@@ -11,9 +11,9 @@
 
 
 
-<title>map</title>
+<title>Data Summarization</title>
 
-<script src="site_libs/jquery-1.12.4/jquery.min.js"></script>
+<script src="site_libs/jquery-1.11.3/jquery.min.js"></script>
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <link href="site_libs/bootstrap-3.3.5/css/flatly.min.css" rel="stylesheet" />
 <script src="site_libs/bootstrap-3.3.5/js/bootstrap.min.js"></script>
@@ -22,14 +22,6 @@
 <script src="site_libs/navigation-1.1/tabsets.js"></script>
 <link href="site_libs/highlightjs-9.12.0/default.css" rel="stylesheet" />
 <script src="site_libs/highlightjs-9.12.0/highlight.js"></script>
-<script src="site_libs/htmlwidgets-1.5.2/htmlwidgets.js"></script>
-<link href="site_libs/leaflet-1.3.1/leaflet.css" rel="stylesheet" />
-<script src="site_libs/leaflet-1.3.1/leaflet.js"></script>
-<link href="site_libs/leafletfix-1.0.0/leafletfix.css" rel="stylesheet" />
-<script src="site_libs/Proj4Leaflet-1.0.1/proj4-compressed.js"></script>
-<script src="site_libs/Proj4Leaflet-1.0.1/proj4leaflet.js"></script>
-<link href="site_libs/rstudio_leaflet-1.3.1/rstudio_leaflet.css" rel="stylesheet" />
-<script src="site_libs/leaflet-binding-2.0.3/leaflet.js"></script>
 
 <style type="text/css">
   code{white-space: pre-wrap;}
@@ -322,18 +314,18 @@ $(document).ready(function () {
 
 
 
-<h1 class="title toc-ignore">map</h1>
+<h1 class="title toc-ignore">Data Summarization</h1>
 
 </div>
 
 
-<p>Use the leaflet map below to explore.</p>
-<pre class="r"><code>leaflet() %&gt;% 
-  setView(lng=-122.594488, lat=47.174515, zoom=16) %&gt;% 
-  addTiles() %&gt;% 
-  addMarkers(lng=-122.594488, lat=47.174515, popup=&quot;Home&quot;)</code></pre>
-<div id="htmlwidget-ea2a5f286cea3336fe67" style="width:672px;height:480px;" class="leaflet html-widget"></div>
-<script type="application/json" data-for="htmlwidget-ea2a5f286cea3336fe67">{"x":{"options":{"crs":{"crsClass":"L.CRS.EPSG3857","code":null,"proj4def":null,"projectedBounds":null,"options":{}}},"setView":[[47.174515,-122.594488],16,[]],"calls":[{"method":"addTiles","args":["//{s}.tile.openstreetmap.org/{z}/{x}/{y}.png",null,null,{"minZoom":0,"maxZoom":18,"tileSize":256,"subdomains":"abc","errorTileUrl":"","tms":false,"noWrap":false,"zoomOffset":0,"zoomReverse":false,"opacity":1,"zIndex":1,"detectRetina":false,"attribution":"&copy; <a href=\"http://openstreetmap.org\">OpenStreetMap<\/a> contributors, <a href=\"http://creativecommons.org/licenses/by-sa/2.0/\">CC-BY-SA<\/a>"}]},{"method":"addMarkers","args":[47.174515,-122.594488,null,null,null,{"interactive":true,"draggable":false,"keyboard":true,"title":"","alt":"","zIndexOffset":0,"opacity":1,"riseOnHover":false,"riseOffset":250},"Home",null,null,null,null,{"interactive":false,"permanent":false,"direction":"auto","opacity":1,"offset":[0,0],"textsize":"10px","textOnly":false,"className":"","sticky":true},null]}],"limits":{"lat":[47.174515,47.174515],"lng":[-122.594488,-122.594488]}},"evals":[],"jsHooks":[]}</script>
+<ol style="list-style-type: decimal">
+<li>Average across lab replicates<br></li>
+<li>Average across multiple analyses (if they exist) for the same lab sample. This will average across multiple methods and reanalyses (different SDGs)<br></li>
+<li>Average across multiple lab samples (if they exist) for the same sample number (split) and lab. Multiple lab samples may exist for the same sample number if the laboratory has created new laboratory sample IDs for reanalyses.<br></li>
+<li>Average across multiple splits (if they exist) for the same lab and interpretive sample. Multiple sample numbers (splits) may exist for the same lab, or the same sample number may exist for different labs. Splits sent to different labs potentially have an additional source of variability in addition to variability between splits sent to the same lab.<br></li>
+<li>Average across laboratories for the same main sample. This summarizes data by main sample (sample_id), which is typically the lowest level of data summarization to be used for data interpretation.</li>
+</ol>
 
 
 

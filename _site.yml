@@ -13,6 +13,10 @@ navbar:
       href: mass_conv.html
     - text: "Dashboard"
       href: dashboard.html
+    - text: "SQL"
+      href: sql_summary.html
+    - text: "Projects"
+      href: projects.html
 output:
   html_document:
     theme: flatly

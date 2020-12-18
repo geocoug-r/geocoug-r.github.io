@@ -1,0 +1,76 @@
+---
+title: "Projects"
+output: 
+  html_document:
+    toc: true
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+---
+
+# CF2167 - Lower Duwamish Waterway / Former Rhône-Poulenc Site
+FRPS (Former Rhone-Poulenc Site)
+
+Ben Petri - PM
+Diane Achman - Go to for project questions
+
+Bill to CF2167.0101 (SAP)
+60 hours allocated
+
+RAL = Remedial Action Level
+OC = Organic Carbon
+
+[Working Directory](\\pfs1w\CF1100-CF3999\CF2167_BayerLDW_MC\Working_Files\DataMgmt\IDB\imports\20201207_load_PDI-PhI)
+
+* Import new sediment data from EPA
+* Load spatial extents
+* Screen for remedial action levels (depth vs location vs compound)
+* RAL varies based on where you're at in the river
+* RAL specific to sediment data (not soil)
+
+
+---
+
+# CF3072 - Serum Data Compilation / Monsanto litigation
+
+Washington state sky valley education center suing monsanto for health related claims due to exposure to PCB and D/F
+
+Looking at serum data
+
+160 total plaintifs
+50-60 have serum data available
+
+5-6 different labs
+
+Data out of PDF format into flat file (excel) format
+
+
+Ann Bradley PM
+Manon - helping develop workflow
+
+Some plaintifs have both PCB and D/F data, others only have one or the other
+
+
+data folder: 20210301 - trial group 1 (bard)
+
+Billing:
+	Erickson (trial group) - CF3072
+		Time explanation: Assist with trial preparation / serum compilation & analysis
+	Bard (trial group) - 
+
+QA
+	Everything has to be 100% correct (b/c litigation evidence)
+
+Timeline
+	Done with compilation and QA by 12/4
+
+Analyzing to Lipid weight basis
+
+We have all lab data that exists
+
+We dont need to load TEQ or tPCB
+
+Bill to CF3072

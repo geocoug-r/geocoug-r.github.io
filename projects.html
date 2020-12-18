@@ -11,9 +11,9 @@
 
 
 
-<title>map</title>
+<title>Projects</title>
 
-<script src="site_libs/jquery-1.12.4/jquery.min.js"></script>
+<script src="site_libs/jquery-1.11.3/jquery.min.js"></script>
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <link href="site_libs/bootstrap-3.3.5/css/flatly.min.css" rel="stylesheet" />
 <script src="site_libs/bootstrap-3.3.5/js/bootstrap.min.js"></script>
@@ -22,14 +22,6 @@
 <script src="site_libs/navigation-1.1/tabsets.js"></script>
 <link href="site_libs/highlightjs-9.12.0/default.css" rel="stylesheet" />
 <script src="site_libs/highlightjs-9.12.0/highlight.js"></script>
-<script src="site_libs/htmlwidgets-1.5.2/htmlwidgets.js"></script>
-<link href="site_libs/leaflet-1.3.1/leaflet.css" rel="stylesheet" />
-<script src="site_libs/leaflet-1.3.1/leaflet.js"></script>
-<link href="site_libs/leafletfix-1.0.0/leafletfix.css" rel="stylesheet" />
-<script src="site_libs/Proj4Leaflet-1.0.1/proj4-compressed.js"></script>
-<script src="site_libs/Proj4Leaflet-1.0.1/proj4leaflet.js"></script>
-<link href="site_libs/rstudio_leaflet-1.3.1/rstudio_leaflet.css" rel="stylesheet" />
-<script src="site_libs/leaflet-binding-2.0.3/leaflet.js"></script>
 
 <style type="text/css">
   code{white-space: pre-wrap;}
@@ -322,18 +314,52 @@ $(document).ready(function () {
 
 
 
-<h1 class="title toc-ignore">map</h1>
+<h1 class="title toc-ignore">Projects</h1>
 
 </div>
 
+<div id="TOC">
+<ul>
+<li><a href="#cf2167---lower-duwamish-waterway-former-rhône-poulenc-site">CF2167 - Lower Duwamish Waterway / Former Rhône-Poulenc Site</a></li>
+<li><a href="#cf3072---serum-data-compilation-monsanto-litigation">CF3072 - Serum Data Compilation / Monsanto litigation</a></li>
+</ul>
+</div>
 
-<p>Use the leaflet map below to explore.</p>
-<pre class="r"><code>leaflet() %&gt;% 
-  setView(lng=-122.594488, lat=47.174515, zoom=16) %&gt;% 
-  addTiles() %&gt;% 
-  addMarkers(lng=-122.594488, lat=47.174515, popup=&quot;Home&quot;)</code></pre>
-<div id="htmlwidget-ea2a5f286cea3336fe67" style="width:672px;height:480px;" class="leaflet html-widget"></div>
-<script type="application/json" data-for="htmlwidget-ea2a5f286cea3336fe67">{"x":{"options":{"crs":{"crsClass":"L.CRS.EPSG3857","code":null,"proj4def":null,"projectedBounds":null,"options":{}}},"setView":[[47.174515,-122.594488],16,[]],"calls":[{"method":"addTiles","args":["//{s}.tile.openstreetmap.org/{z}/{x}/{y}.png",null,null,{"minZoom":0,"maxZoom":18,"tileSize":256,"subdomains":"abc","errorTileUrl":"","tms":false,"noWrap":false,"zoomOffset":0,"zoomReverse":false,"opacity":1,"zIndex":1,"detectRetina":false,"attribution":"&copy; <a href=\"http://openstreetmap.org\">OpenStreetMap<\/a> contributors, <a href=\"http://creativecommons.org/licenses/by-sa/2.0/\">CC-BY-SA<\/a>"}]},{"method":"addMarkers","args":[47.174515,-122.594488,null,null,null,{"interactive":true,"draggable":false,"keyboard":true,"title":"","alt":"","zIndexOffset":0,"opacity":1,"riseOnHover":false,"riseOffset":250},"Home",null,null,null,null,{"interactive":false,"permanent":false,"direction":"auto","opacity":1,"offset":[0,0],"textsize":"10px","textOnly":false,"className":"","sticky":true},null]}],"limits":{"lat":[47.174515,47.174515],"lng":[-122.594488,-122.594488]}},"evals":[],"jsHooks":[]}</script>
+<hr />
+<div id="cf2167---lower-duwamish-waterway-former-rhône-poulenc-site" class="section level1">
+<h1>CF2167 - Lower Duwamish Waterway / Former Rhône-Poulenc Site</h1>
+<p>FRPS (Former Rhone-Poulenc Site)</p>
+<p>Ben Petri - PM Diane Achman - Go to for project questions</p>
+<p>Bill to CF2167.0101 (SAP) 60 hours allocated</p>
+<p>RAL = Remedial Action Level OC = Organic Carbon</p>
+<p><a href="\pfs1w\CF1100-CF3999\CF2167_BayerLDW_MC\Working_Files\DataMgmt\IDB\imports\20201207_load_PDI-PhI">Working Directory</a></p>
+<ul>
+<li>Import new sediment data from EPA</li>
+<li>Load spatial extents</li>
+<li>Screen for remedial action levels (depth vs location vs compound)</li>
+<li>RAL varies based on where you’re at in the river</li>
+<li>RAL specific to sediment data (not soil)</li>
+</ul>
+<hr />
+</div>
+<div id="cf3072---serum-data-compilation-monsanto-litigation" class="section level1">
+<h1>CF3072 - Serum Data Compilation / Monsanto litigation</h1>
+<p>Washington state sky valley education center suing monsanto for health related claims due to exposure to PCB and D/F</p>
+<p>Looking at serum data</p>
+<p>160 total plaintifs 50-60 have serum data available</p>
+<p>5-6 different labs</p>
+<p>Data out of PDF format into flat file (excel) format</p>
+<p>Ann Bradley PM Manon - helping develop workflow</p>
+<p>Some plaintifs have both PCB and D/F data, others only have one or the other</p>
+<p>data folder: 20210301 - trial group 1 (bard)</p>
+<p>Billing: Erickson (trial group) - CF3072 Time explanation: Assist with trial preparation / serum compilation &amp; analysis Bard (trial group) -</p>
+<p>QA Everything has to be 100% correct (b/c litigation evidence)</p>
+<p>Timeline Done with compilation and QA by 12/4</p>
+<p>Analyzing to Lipid weight basis</p>
+<p>We have all lab data that exists</p>
+<p>We dont need to load TEQ or tPCB</p>
+<p>Bill to CF3072</p>
+</div>
 
 
 
