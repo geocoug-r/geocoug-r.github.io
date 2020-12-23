@@ -281,7 +281,7 @@ $(document).ready(function () {
         <span class="icon-bar"></span>
         <span class="icon-bar"></span>
       </button>
-      <a class="navbar-brand" href="index.html">My Website</a>
+      <a class="navbar-brand" href="index.html">geocoug</a>
     </div>
     <div id="navbar" class="navbar-collapse collapse">
       <ul class="nav navbar-nav">
@@ -305,6 +305,9 @@ $(document).ready(function () {
 </li>
 <li>
   <a href="projects.html">Projects</a>
+</li>
+<li>
+  <a href="chem.html">Chemistry</a>
 </li>
       </ul>
       <ul class="nav navbar-nav navbar-right">
@@ -332,12 +335,15 @@ $(document).ready(function () {
 
 <div id="TOC">
 <ul>
+<li><a href="#sources">Sources</a></li>
 <li><a href="#wet-weight">Wet Weight</a></li>
 <li><a href="#dry-weight">Dry Weight</a></li>
+<li><a href="#lipid">Lipid</a></li>
 <li><a href="#conversions">Conversions</a><ul>
 <li><a href="#wet-to-dry">Wet to Dry</a></li>
 <li><a href="#dry-to-wet">Dry to Wet</a></li>
 </ul></li>
+<li><a href="#lipiddrywet">Lipid/Dry/Wet</a></li>
 <li><a href="#analytical-blanks">Analytical “Blanks”</a><ul>
 <li><a href="#trip-blank">Trip Blank</a></li>
 <li><a href="#field-blank">Field Blank</a></li>
@@ -349,16 +355,41 @@ $(document).ready(function () {
 </div>
 
 <p><br></p>
+<div id="sources" class="section level2">
+<h2>Sources</h2>
+<p><a href="https://pubs.usgs.gov/wdr/WDR-WA-03-1/pdf/ADR_N.pdf">https://pubs.usgs.gov/wdr/WDR-WA-03-1/pdf/ADR_N.pdf</a> <a href="http://www.eccsmobilelab.com/resources/literature/?Id=117">http://www.eccsmobilelab.com/resources/literature/?Id=117</a> <a href="./static/EFH-REFS_CHPT10.pdf">Conversions</a></p>
+<p><br></p>
+</div>
 <div id="wet-weight" class="section level2">
 <h2>Wet Weight</h2>
 <blockquote>
-<p>Wet weight (or as-is) basis means no calculation has been made to compensate for the moisture content of a sample</p>
+<ol style="list-style-type: decimal">
+<li>Wet weight (or as-is) basis means no calculation has been made to compensate for the moisture content of a sample</li>
+</ol>
+</blockquote>
+<blockquote>
+<ol start="2" style="list-style-type: decimal">
+<li>Wet weight refers to the weight of animal tissue or other substance including its contained water. (See also “Dry weight”)</li>
+</ol>
 </blockquote>
 </div>
 <div id="dry-weight" class="section level2">
 <h2>Dry Weight</h2>
 <blockquote>
-<p>Dry weight basis means the lab has measured moisture content of a sample and calculated concentrations based on the percent solids present.</p>
+<ol style="list-style-type: decimal">
+<li>Dry weight basis means the lab has measured moisture content of a sample and calculated concentrations based on the percent solids present.</li>
+</ol>
+</blockquote>
+<blockquote>
+<ol start="2" style="list-style-type: decimal">
+<li>Dry weight refers to the weight of animal tissue after it has been dried in an oven at 65°C until a constant weight is achieved. Dry weight represents total organic and inorganic matter in the tissue. (See also “Wet weight”).</li>
+</ol>
+</blockquote>
+</div>
+<div id="lipid" class="section level2">
+<h2>Lipid</h2>
+<blockquote>
+<p>Lipid is any one of a family of compounds that are insoluble in water and that make up one of the principal components of living cells. Lipids include fats, oils, waxes, and steroids. Many environmental contaminants such as organochlorine pesticides are lipophilic.</p>
 </blockquote>
 </div>
 <div id="conversions" class="section level2">
@@ -375,6 +406,13 @@ $(document).ready(function () {
 </center>
 <p><br></p>
 </div>
+</div>
+<div id="lipiddrywet" class="section level2">
+<h2>Lipid/Dry/Wet</h2>
+<center>
+<img src="static/mass_conv.png" title="fig:" alt="Calcs" />
+</center>
+<p><br></p>
 </div>
 <div id="analytical-blanks" class="section level2">
 <h2>Analytical “Blanks”</h2>

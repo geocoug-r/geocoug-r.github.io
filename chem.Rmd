@@ -1,0 +1,50 @@
+---
+title: "Chemistry"
+output: 
+  html_document:
+    toc: TRUE
+    code_folding: show
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = T, warning = F, message = F)
+```
+
+## References
+[Source](https://readxl.tidyverse.org/)
+
+## Packages
+```{r pkg}
+# install.packages("tidyverse")
+
+#install.packages("readxl")
+#or
+#devtools::install_github("tidyverse/readxl")
+
+library(tidyverse)
+library(readxl)
+library(DT)
+```
+
+
+## Ingest workbook
+```{r ingest}
+wb <- "./static/Chemical_Lists.xls"
+
+chem_lists <- read_excel(wb, sheet=1)
+cwa <- read_excel(wb, sheet=2)
+pfas <- read_excel(wb, sheet=3)
+pesticides <- read_excel(wb, sheet=4)
+pcb <- read_excel(wb, sheet=5)
+pah <- read_excel(wb, sheet=6)
+fertilizers <- read_excel(wb, sheet=7)
+dioxfuran <- read_excel(wb, sheet=8)
+pbde <- read_excel(wb, sheet=9)
+```
+
+
+## View sheet as datatable()
+```{r show}
+datatable(pcb)
+```
+

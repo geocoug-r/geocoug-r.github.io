@@ -10,6 +10,12 @@ editor_options:
 
 <br>
 
+## Sources
+[https://pubs.usgs.gov/wdr/WDR-WA-03-1/pdf/ADR_N.pdf](https://pubs.usgs.gov/wdr/WDR-WA-03-1/pdf/ADR_N.pdf)
+[http://www.eccsmobilelab.com/resources/literature/?Id=117](http://www.eccsmobilelab.com/resources/literature/?Id=117)
+[Conversions](./static/EFH-REFS_CHPT10.pdf)
+
+<br>
 ```{r setup, include=FALSE}
 knitr::opts_chunk$set(echo = TRUE)
 ```
@@ -25,10 +31,18 @@ x
 ```
 
 ## Wet Weight
-> Wet weight (or as-is) basis means no calculation has been made to compensate for the moisture content of a sample
+> 1. Wet weight (or as-is) basis means no calculation has been made to compensate for the moisture content of a sample
+
+> 2. Wet weight refers to the weight of animal tissue or other substance including its contained water. (See also “Dry weight”)
 
 ## Dry Weight
-> Dry weight basis means the lab has measured moisture content of a sample and calculated concentrations based on the percent solids present.
+> 1. Dry weight basis means the lab has measured moisture content of a sample and calculated concentrations based on the percent solids present.
+
+> 2. Dry weight refers to the weight of animal tissue after it has been dried in an oven at 65°C until a constant weight is achieved. Dry weight represents total organic and inorganic matter in the tissue. (See also “Wet weight”).
+
+## Lipid
+> Lipid is any one of a family of compounds that are insoluble in water and that make up one of the principal components of living cells. Lipids include fats, oils, waxes, and steroids. Many environmental contaminants such as organochlorine pesticides are lipophilic.
+
 
 
 ## Conversions
@@ -39,6 +53,13 @@ $$DryWt = \frac{WetWt}{Percent Solids} * 100$$
 $$WetWt = \frac{DryWt * PercentSolids}{100}$$
 <center>**DryWt & WetWt** = concentration<br>
 **PercentSolids** = percentage (no decimal)</center>
+
+<br>
+
+## Lipid/Dry/Wet
+<center>
+![Calcs](./static/mass_conv.png)
+</center>
 
 <br>
 

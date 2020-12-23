@@ -3,6 +3,7 @@ title: "map"
 output: 
   html_document:
     toc: FALSE
+    code_folding: hide
 ---
 
 ```{r setup, include=FALSE}

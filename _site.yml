@@ -1,6 +1,6 @@
-name: "first-website"
+name: "geocoug Rmarkdown"
 navbar:
-  title: "My Website"
+  title: "geocoug"
   type: default #inverse
   left:
     - text: "Home"
@@ -17,6 +17,8 @@ navbar:
       href: sql_summary.html
     - text: "Projects"
       href: projects.html
+    - text: "Chemistry"
+      href: chem.html
 output:
   html_document:
     theme: flatly

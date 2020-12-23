@@ -2,12 +2,13 @@
 title: "db"
 output: 
   html_document:
-    toc: FALSE
+    toc: TRUE
+    code_folding: hide
 ---
 
 
 ```{r setup, include=FALSE}
-knitr::opts_chunk$set(echo = TRUE)
+knitr::opts_chunk$set(echo = T, warning = F, message = F)
 ```
 
 
@@ -42,6 +43,8 @@ conn <- DBI::dbConnect(
 
 
 ## DB query
+
+[datatables - options](https://datatables.net/reference/option/)
 ```{r dbquery, out.width="50%"}
 tbls <- dbListTables(conn)
 
@@ -52,14 +55,17 @@ cols <- names(res)
 
 #paged_table(res, options=list(rows.print=10))
 
-datatable(res, 
-          extensions = 'FixedColumns', # freeze left most column in a scrolling datatable
-          options = list( # https://datatables.net/reference/option/
-            dom = 't', # Define table control elements to appear on page and in what order
-            scrollX = TRUE, # horizontal scrolling (scrollY = vertical scrolling)
-            scrollCollapse = TRUE # allow table to reduce in height when a limited number of rows are shown
-          )
-)
+# datatable(res, 
+#           extensions = 'FixedColumns' #, # freeze left most column in a scrolling datatable
+#           # options = list(
+#           #   dom = 't', # Define table control elements to appear on page and in what order
+#           #   scrollX = TRUE, # horizontal scrolling (scrollY = vertical scrolling)
+#           #   # scrollCollapse = TRUE # allow table to reduce in height when a limited number of rows are shown
+#           #   paging = TRUE
+#           # )
+# )
+
+datatable(res)
 ```
 
 ## Sleep quality

@@ -1,6 +1,9 @@
 ---
-title: "Data Summarization"
-output: html_document
+title: "Data Handling"
+output:
+  html_document:
+    toc: TRUE
+    code_folding: hide
 ---
 
 ```{r setup, include=FALSE}
@@ -8,8 +11,14 @@ knitr::opts_chunk$set(echo = TRUE)
 ```
 
 
+## Data Summarization
+
 1.  Average across lab replicates<br>
 2.  Average across multiple analyses (if they exist) for the same lab sample. This will average across multiple methods and reanalyses (different SDGs)<br>
 3.  Average across multiple lab samples (if they exist) for the same sample number (split) and lab.  Multiple lab samples may exist for the same sample number if the laboratory has created new laboratory sample IDs for reanalyses.<br>
 4.  Average across multiple splits (if they exist) for the same lab and interpretive sample. Multiple sample numbers (splits) may exist for the same lab, or the same sample  number may exist for different labs. Splits sent to different labs potentially have an additional source of variability in addition to variability between splits sent to the same lab.<br>
 5.  Average across laboratories for the same main sample. This summarizes data by main sample (sample_id), which is typically the lowest level of data summarization to be used for data interpretation.
+
+## Resources
+
+* [Chemical Lists](./static/Chemical_Lists.xls)
