@@ -19,10 +19,15 @@
 <script src="site_libs/bootstrap-3.3.5/js/bootstrap.min.js"></script>
 <script src="site_libs/bootstrap-3.3.5/shim/html5shiv.min.js"></script>
 <script src="site_libs/bootstrap-3.3.5/shim/respond.min.js"></script>
+<script src="site_libs/jqueryui-1.11.4/jquery-ui.min.js"></script>
+<link href="site_libs/tocify-1.9.1/jquery.tocify.css" rel="stylesheet" />
+<script src="site_libs/tocify-1.9.1/jquery.tocify.js"></script>
 <script src="site_libs/navigation-1.1/tabsets.js"></script>
 <script src="site_libs/navigation-1.1/codefolding.js"></script>
 <link href="site_libs/highlightjs-9.12.0/default.css" rel="stylesheet" />
 <script src="site_libs/highlightjs-9.12.0/highlight.js"></script>
+<link href="site_libs/pagedtable-1.1/css/pagedtable.css" rel="stylesheet" />
+<script src="site_libs/pagedtable-1.1/js/pagedtable.js"></script>
 <script src="site_libs/htmlwidgets-1.5.2/htmlwidgets.js"></script>
 <link href="site_libs/datatables-css-0.0.0/datatables-crosstalk.css" rel="stylesheet" />
 <script src="site_libs/datatables-binding-0.16/datatables.js"></script>
@@ -270,6 +275,69 @@ $(document).ready(function () {
 
 
 
+<style type="text/css">
+
+#TOC {
+  margin: 25px 0px 20px 0px;
+}
+@media (max-width: 768px) {
+#TOC {
+  position: relative;
+  width: 100%;
+}
+}
+
+@media print {
+.toc-content {
+  /* see https://github.com/w3c/csswg-drafts/issues/4434 */
+  float: right;
+}
+}
+
+.toc-content {
+  padding-left: 30px;
+  padding-right: 40px;
+}
+
+div.main-container {
+  max-width: 1200px;
+}
+
+div.tocify {
+  width: 20%;
+  max-width: 260px;
+  max-height: 85%;
+}
+
+@media (min-width: 768px) and (max-width: 991px) {
+  div.tocify {
+    width: 25%;
+  }
+}
+
+@media (max-width: 767px) {
+  div.tocify {
+    width: 100%;
+    max-width: none;
+  }
+}
+
+.tocify ul, .tocify li {
+  line-height: 20px;
+}
+
+.tocify-subheader .tocify-item {
+  font-size: 0.90em;
+}
+
+.tocify .list-group-item {
+  border-radius: 0px;
+}
+
+
+</style>
+
+
 
 </head>
 
@@ -277,6 +345,16 @@ $(document).ready(function () {
 
 
 <div class="container-fluid main-container">
+
+
+<!-- setup 3col/9col grid for toc_float and main content  -->
+<div class="row-fluid">
+<div class="col-xs-12 col-sm-4 col-md-3">
+<div id="TOC" class="tocify">
+</div>
+</div>
+
+<div class="toc-content col-xs-12 col-sm-8 col-md-9">
 
 
 
@@ -303,19 +381,10 @@ $(document).ready(function () {
   <a href="db.html">Database</a>
 </li>
 <li>
-  <a href="mass_conv.html">Concentration Basis Conversion</a>
+  <a href="lab.html">Lab Data</a>
 </li>
 <li>
-  <a href="dashboard.html">Dashboard</a>
-</li>
-<li>
-  <a href="sql_summary.html">SQL</a>
-</li>
-<li>
-  <a href="projects.html">Projects</a>
-</li>
-<li>
-  <a href="chem.html">Chemistry</a>
+  <a href="data_management.html">Data Management</a>
 </li>
       </ul>
       <ul class="nav navbar-nav navbar-right">
@@ -341,25 +410,9 @@ $(document).ready(function () {
 
 </div>
 
-<div id="TOC">
-<ul>
-<li><a href="#packages">Packages</a></li>
-<li><a href="#references">References</a></li>
-<li><a href="#data">Data</a></li>
-<li><a href="#markdown-syntax">Markdown Syntax</a></li>
-<li><a href="#other-languages">Other Languages</a><ul>
-<li><a href="#sql">SQL</a><ul>
-<li><a href="#option-1">Option 1</a></li>
-<li><a href="#option-2">Option 2</a></li>
-</ul></li>
-<li><a href="#python">Python</a></li>
-</ul></li>
-</ul>
-</div>
 
-<div id="packages" class="section level1">
-<h1>Packages</h1>
-<pre class="r"><code>if (!require(librarian)){
+<pre class="r"><code># Still need to figure out what this is actually doing
+if (!require(librarian)){
   remotes::install_github(&quot;DesiQuintans/librarian&quot;)
   library(librarian)
 }
@@ -368,7 +421,7 @@ shelf(
   DBI, RPostgres,
   # spatial
   ggmap, leaflet, 
-  r-spatial/mapview, # https://github.com/r-spatial/mapview/issues/324
+  r-spatial/mapview,
   sf, sp,
   # tidyverse
   dplyr, purrr, readr, tibble, tidyr,
@@ -379,41 +432,30 @@ shelf(
   # utility
   fs, glue, here, png, scales, stringr, urltools)
 here &lt;- here::here</code></pre>
-<p><br></p>
-</div>
 <div id="references" class="section level1">
 <h1>References</h1>
 <ul>
 <li><a href="https://rmarkdown.rstudio.com/authoring_basics.html">R Markdown Basics</a></li>
 <li><a href="https://bookdown.org/yihui/rmarkdown/">R Markdown Reference Guide</a></li>
 <li><a href="https://rmarkdown.rstudio.com/flexdashboard/">Flexdashboard</a></li>
-</ul>
-<p><br></p>
-</div>
-<div id="data" class="section level1">
-<h1>Data</h1>
-<ul>
 <li><a href="https://github.com/awesomedata/awesome-public-datasets">Awesome public datasets</a></li>
 </ul>
-<p><br></p>
 </div>
-<div id="markdown-syntax" class="section level1">
-<h1>Markdown Syntax</h1>
-<p><br></p>
+<div id="languages" class="section level1">
+<h1>Languages</h1>
+<div id="r" class="section level2">
+<h2>R</h2>
 </div>
-<div id="other-languages" class="section level1">
-<h1>Other Languages</h1>
 <div id="sql" class="section level2">
 <h2>SQL</h2>
 <div id="option-1" class="section level3">
 <h3>Option 1</h3>
 <p>Create connection chunk, then call connection in each subsequent chunk.</p>
-<pre class="r"><code>library(DBI)
+<pre class="r fold-show"><code>library(DBI)
 
-pass &lt;- readLines(&quot;../../pwd.txt&quot;)</code></pre>
-<pre><code>## Warning in readLines(&quot;../../pwd.txt&quot;): incomplete final line found on &#39;../../
-## pwd.txt&#39;</code></pre>
-<pre class="r"><code>db = dbConnect(
+pass &lt;- readLines(&quot;../../pwd.txt&quot;)
+
+db = dbConnect(
   RPostgres::Postgres(),
   dbname   = &quot;personal&quot;,
   host     = &quot;localhost&quot;,
@@ -422,332 +464,11 @@ pass &lt;- readLines(&quot;../../pwd.txt&quot;)</code></pre>
   password = pass
 )</code></pre>
 <pre class="sql"><code>select * from sleepdata</code></pre>
-<div class="knitsql-table">
-<table style="width:100%;">
-<caption>Displaying records 1 - 10</caption>
-<colgroup>
-<col width="6%" />
-<col width="6%" />
-<col width="4%" />
-<col width="3%" />
-<col width="1%" />
-<col width="1%" />
-<col width="4%" />
-<col width="1%" />
-<col width="3%" />
-<col width="4%" />
-<col width="3%" />
-<col width="5%" />
-<col width="4%" />
-<col width="4%" />
-<col width="6%" />
-<col width="6%" />
-<col width="6%" />
-<col width="1%" />
-<col width="3%" />
-<col width="6%" />
-<col width="3%" />
-<col width="1%" />
-<col width="6%" />
-<col width="2%" />
-</colgroup>
-<thead>
-<tr class="header">
-<th align="left">start_time</th>
-<th align="left">end_time</th>
-<th align="right">sleep_quality</th>
-<th align="right">regularity</th>
-<th align="left">unit</th>
-<th align="left">mood</th>
-<th align="right">heart_rate_bpm</th>
-<th align="right">steps</th>
-<th align="left">alarm_mode</th>
-<th align="right">air_pressure_pa</th>
-<th align="left">city</th>
-<th align="right">movements_per_hour</th>
-<th align="right">seconds_in bed</th>
-<th align="right">seconds_asleep</th>
-<th align="right">seconds_until_sleep</th>
-<th align="left">wakeup_window_start</th>
-<th align="left">wakeup_window_end</th>
-<th align="left">snore</th>
-<th align="right">snore_time</th>
-<th align="right">weather_temperature_f</th>
-<th align="left">weather_type</th>
-<th align="left">notes</th>
-<th align="left">rev_time</th>
-<th align="left">rev_user</th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td align="left">2020-04-14 20:41:00</td>
-<td align="left">2020-04-15 04:12:00</td>
-<td align="right">0.88</td>
-<td align="right">0.00</td>
-<td align="left">%</td>
-<td align="left">NA</td>
-<td align="right">0</td>
-<td align="right">0</td>
-<td align="left">Normal</td>
-<td align="right">102.1</td>
-<td align="left">NA</td>
-<td align="right">69.4</td>
-<td align="right">27056.9</td>
-<td align="right">23449.3</td>
-<td align="right">541.1</td>
-<td align="left">2020-04-15 04:30:00</td>
-<td align="left">2020-04-15 05:00:00</td>
-<td align="left">TRUE</td>
-<td align="right">444</td>
-<td align="right">32.0</td>
-<td align="left">No weather</td>
-<td align="left">NA</td>
-<td align="left">2020-11-05 14:59:24</td>
-<td align="left">cgrant</td>
-</tr>
-<tr class="even">
-<td align="left">2020-04-15 20:51:00</td>
-<td align="left">2020-04-16 04:35:00</td>
-<td align="right">0.70</td>
-<td align="right">0.00</td>
-<td align="left">%</td>
-<td align="left">NA</td>
-<td align="right">0</td>
-<td align="right">0</td>
-<td align="left">Normal</td>
-<td align="right">102.0</td>
-<td align="left">NA</td>
-<td align="right">92.5</td>
-<td align="right">27844.9</td>
-<td align="right">24225.0</td>
-<td align="right">2227.6</td>
-<td align="left">2020-04-16 04:30:00</td>
-<td align="left">2020-04-16 05:00:00</td>
-<td align="left">TRUE</td>
-<td align="right">0</td>
-<td align="right">32.0</td>
-<td align="left">No weather</td>
-<td align="left">NA</td>
-<td align="left">2020-11-05 14:59:24</td>
-<td align="left">cgrant</td>
-</tr>
-<tr class="odd">
-<td align="left">2020-04-16 21:35:00</td>
-<td align="left">2020-04-17 04:55:00</td>
-<td align="right">0.80</td>
-<td align="right">0.91</td>
-<td align="left">%</td>
-<td align="left">NA</td>
-<td align="right">0</td>
-<td align="right">0</td>
-<td align="left">Normal</td>
-<td align="right">101.7</td>
-<td align="left">Steilacoom</td>
-<td align="right">74.0</td>
-<td align="right">26392.4</td>
-<td align="right">22257.6</td>
-<td align="right">527.8</td>
-<td align="left">2020-04-17 04:30:00</td>
-<td align="left">2020-04-17 05:00:00</td>
-<td align="left">TRUE</td>
-<td align="right">547</td>
-<td align="right">37.6</td>
-<td align="left">Sunny</td>
-<td align="left">NA</td>
-<td align="left">2020-11-05 14:59:24</td>
-<td align="left">cgrant</td>
-</tr>
-<tr class="even">
-<td align="left">2020-04-19 20:41:00</td>
-<td align="left">2020-04-20 04:57:00</td>
-<td align="right">0.75</td>
-<td align="right">0.92</td>
-<td align="left">%</td>
-<td align="left">NA</td>
-<td align="right">0</td>
-<td align="right">0</td>
-<td align="left">Normal</td>
-<td align="right">101.5</td>
-<td align="left">Steilacoom</td>
-<td align="right">92.6</td>
-<td align="right">29766.6</td>
-<td align="right">26889.2</td>
-<td align="right">595.3</td>
-<td align="left">2020-04-20 04:30:00</td>
-<td align="left">2020-04-20 05:00:00</td>
-<td align="left">TRUE</td>
-<td align="right">67</td>
-<td align="right">44.2</td>
-<td align="left">Fair</td>
-<td align="left">NA</td>
-<td align="left">2020-11-05 14:59:24</td>
-<td align="left">cgrant</td>
-</tr>
-<tr class="odd">
-<td align="left">2020-04-20 20:47:00</td>
-<td align="left">2020-04-21 04:34:00</td>
-<td align="right">0.70</td>
-<td align="right">0.96</td>
-<td align="left">%</td>
-<td align="left">NA</td>
-<td align="right">0</td>
-<td align="right">0</td>
-<td align="left">Normal</td>
-<td align="right">101.7</td>
-<td align="left">Steilacoom</td>
-<td align="right">96.9</td>
-<td align="right">27988.7</td>
-<td align="right">23790.4</td>
-<td align="right">559.8</td>
-<td align="left">2020-04-21 04:30:00</td>
-<td align="left">2020-04-21 05:00:00</td>
-<td align="left">TRUE</td>
-<td align="right">93</td>
-<td align="right">45.9</td>
-<td align="left">Cloudy</td>
-<td align="left">NA</td>
-<td align="left">2020-11-05 14:59:24</td>
-<td align="left">cgrant</td>
-</tr>
-<tr class="even">
-<td align="left">2020-04-21 20:36:00</td>
-<td align="left">2020-04-22 04:45:00</td>
-<td align="right">0.94</td>
-<td align="right">0.96</td>
-<td align="left">%</td>
-<td align="left">NA</td>
-<td align="right">0</td>
-<td align="right">4951</td>
-<td align="left">Normal</td>
-<td align="right">102.2</td>
-<td align="left">Steilacoom</td>
-<td align="right">71.1</td>
-<td align="right">29345.9</td>
-<td align="right">25335.3</td>
-<td align="right">2934.6</td>
-<td align="left">2020-04-22 04:30:00</td>
-<td align="left">2020-04-22 05:00:00</td>
-<td align="left">TRUE</td>
-<td align="right">1001</td>
-<td align="right">45.9</td>
-<td align="left">Cloudy</td>
-<td align="left">NA</td>
-<td align="left">2020-11-05 14:59:24</td>
-<td align="left">cgrant</td>
-</tr>
-<tr class="odd">
-<td align="left">2020-04-22 20:36:00</td>
-<td align="left">2020-04-23 04:16:00</td>
-<td align="right">0.79</td>
-<td align="right">0.96</td>
-<td align="left">%</td>
-<td align="left">NA</td>
-<td align="right">0</td>
-<td align="right">464</td>
-<td align="left">Normal</td>
-<td align="right">101.5</td>
-<td align="left">Steilacoom</td>
-<td align="right">82.0</td>
-<td align="right">27611.1</td>
-<td align="right">23193.3</td>
-<td align="right">552.2</td>
-<td align="left">2020-04-23 04:30:00</td>
-<td align="left">2020-04-23 05:00:00</td>
-<td align="left">TRUE</td>
-<td align="right">581</td>
-<td align="right">49.5</td>
-<td align="left">Rain</td>
-<td align="left">NA</td>
-<td align="left">2020-11-05 14:59:24</td>
-<td align="left">cgrant</td>
-</tr>
-<tr class="even">
-<td align="left">2020-04-23 20:49:00</td>
-<td align="left">2020-04-24 04:07:00</td>
-<td align="right">0.84</td>
-<td align="right">0.97</td>
-<td align="left">%</td>
-<td align="left">NA</td>
-<td align="right">0</td>
-<td align="right">559</td>
-<td align="left">Normal</td>
-<td align="right">102.3</td>
-<td align="left">Steilacoom</td>
-<td align="right">70.3</td>
-<td align="right">26285.0</td>
-<td align="right">20151.8</td>
-<td align="right">525.7</td>
-<td align="left">2020-04-24 04:30:00</td>
-<td align="left">2020-04-24 05:00:00</td>
-<td align="left">TRUE</td>
-<td align="right">0</td>
-<td align="right">45.0</td>
-<td align="left">Rain</td>
-<td align="left">NA</td>
-<td align="left">2020-11-05 14:59:24</td>
-<td align="left">cgrant</td>
-</tr>
-<tr class="odd">
-<td align="left">2020-04-26 19:57:00</td>
-<td align="left">2020-04-27 04:36:00</td>
-<td align="right">0.75</td>
-<td align="right">0.89</td>
-<td align="left">%</td>
-<td align="left">NA</td>
-<td align="right">0</td>
-<td align="right">3802</td>
-<td align="left">Normal</td>
-<td align="right">101.0</td>
-<td align="left">Steilacoom</td>
-<td align="right">98.0</td>
-<td align="right">31113.1</td>
-<td align="right">29038.9</td>
-<td align="right">622.3</td>
-<td align="left">2020-04-27 04:30:00</td>
-<td align="left">2020-04-27 05:00:00</td>
-<td align="left">TRUE</td>
-<td align="right">0</td>
-<td align="right">49.8</td>
-<td align="left">Cloudy</td>
-<td align="left">NA</td>
-<td align="left">2020-11-05 14:59:24</td>
-<td align="left">cgrant</td>
-</tr>
-<tr class="even">
-<td align="left">2020-04-27 20:27:00</td>
-<td align="left">2020-04-28 04:20:00</td>
-<td align="right">0.89</td>
-<td align="right">0.94</td>
-<td align="left">%</td>
-<td align="left">NA</td>
-<td align="right">0</td>
-<td align="right">15</td>
-<td align="left">Normal</td>
-<td align="right">101.9</td>
-<td align="left">Steilacoom</td>
-<td align="right">73.2</td>
-<td align="right">28385.9</td>
-<td align="right">22519.5</td>
-<td align="right">4068.6</td>
-<td align="left">2020-04-28 04:30:00</td>
-<td align="left">2020-04-28 05:00:00</td>
-<td align="left">TRUE</td>
-<td align="right">0</td>
-<td align="right">45.0</td>
-<td align="left">Cloudy</td>
-<td align="left">NA</td>
-<td align="left">2020-11-05 14:59:24</td>
-<td align="left">cgrant</td>
-</tr>
-</tbody>
-</table>
-</div>
 </div>
 <div id="option-2" class="section level3">
 <h3>Option 2</h3>
 <p>Set default connection in the setup chunk (pretend its the setup chunk).</p>
-<pre class="r"><code>library(DBI)
+<pre class="r fold-show"><code>library(DBI)
 db = dbConnect(
   RPostgres::Postgres(),
   dbname   = &quot;personal&quot;,
@@ -759,40 +480,46 @@ db = dbConnect(
 knitr::opts_chunk$set(connection = &quot;db&quot;)</code></pre>
 <p>Then you dont have to specify the connection for each chunk.</p>
 <pre class="sql"><code>select * from sleepdata</code></pre>
-<p><br></p>
 </div>
 </div>
 <div id="python" class="section level2">
 <h2>Python</h2>
 <p>To use the Python engine, you need to call <code>library(reticulate)</code> <a href="https://rstudio.github.io/reticulate/">link</a></p>
-<pre class="r"><code># install.packages(&quot;reticulate&quot;)
+<pre class="r fold-show"><code># install.packages(&quot;reticulate&quot;)
 library(reticulate)
 
 # Use specific Python installation
-use_python(&quot;C:/Python37&quot;)
+# use_python(&quot;C:/Python37&quot;)
 
 # Use conda environment
 use_condaenv(&quot;dev&quot;)</code></pre>
 <p>Now you can run Python code</p>
-<pre class="python"><code>x = 4 * 4
+<pre class="python fold-show"><code>x = 4 * 4
 print(x)</code></pre>
 <pre><code>## 16</code></pre>
 <p>You can import libraries as normal</p>
-<pre class="python"><code>import pandas as pd
+<pre class="python fold-show"><code>import pandas as pd
 
 vals = {&quot;col1&quot;: [&#39;a&#39;, &#39;b&#39;, &#39;c&#39;, &#39;d&#39;], &quot;col2&quot;: [1, 10, 100, 1000]}
-df = pd.DataFrame(vals)</code></pre>
+df = pd.DataFrame(vals)
+print(df)</code></pre>
+<pre><code>##   col1  col2
+## 0    a     1
+## 1    b    10
+## 2    c   100
+## 3    d  1000</code></pre>
 <p>Access objects created within Python chunks from R using <code>py$&lt;var&gt;</code></p>
-<pre class="r"><code>library(DT)
-dt = datatable(py$df)
-dt</code></pre>
-<div id="htmlwidget-ea2a5f286cea3336fe67" style="width:100%;height:auto;" class="datatables html-widget"></div>
-<script type="application/json" data-for="htmlwidget-ea2a5f286cea3336fe67">{"x":{"filter":"none","data":[["1","2","3","4"],["a","b","c","d"],[1,10,100,1000]],"container":"<table class=\"display\">\n  <thead>\n    <tr>\n      <th> <\/th>\n      <th>col1<\/th>\n      <th>col2<\/th>\n    <\/tr>\n  <\/thead>\n<\/table>","options":{"columnDefs":[{"className":"dt-right","targets":2},{"orderable":false,"targets":0}],"order":[],"autoWidth":false,"orderClasses":false}},"evals":[],"jsHooks":[]}</script>
+<pre class="r fold-show"><code>library(DT)
+datatable(py$df)</code></pre>
+<div id="htmlwidget-ab85b6a83abd7b3673ca" style="width:100%;height:auto;" class="datatables html-widget"></div>
+<script type="application/json" data-for="htmlwidget-ab85b6a83abd7b3673ca">{"x":{"filter":"none","data":[["1","2","3","4"],["a","b","c","d"],[1,10,100,1000]],"container":"<table class=\"display\">\n  <thead>\n    <tr>\n      <th> <\/th>\n      <th>col1<\/th>\n      <th>col2<\/th>\n    <\/tr>\n  <\/thead>\n<\/table>","options":{"columnDefs":[{"className":"dt-right","targets":2},{"orderable":false,"targets":0}],"order":[],"autoWidth":false,"orderClasses":false}},"evals":[],"jsHooks":[]}</script>
 </div>
 </div>
 
 
 
+</div>
+</div>
 
 </div>
 
@@ -830,6 +557,32 @@ $(document).ready(function () {
 });
 </script>
 
+<script>
+$(document).ready(function ()  {
+
+    // move toc-ignore selectors from section div to header
+    $('div.section.toc-ignore')
+        .removeClass('toc-ignore')
+        .children('h1,h2,h3,h4,h5').addClass('toc-ignore');
+
+    // establish options
+    var options = {
+      selectors: "h1,h2,h3",
+      theme: "bootstrap3",
+      context: '.toc-content',
+      hashGenerator: function (text) {
+        return text.replace(/[.\\/?&!#<>]/g, '').replace(/\s/g, '_');
+      },
+      ignoreSelector: ".toc-ignore",
+      scrollTo: 0
+    };
+    options.showAndHide = true;
+    options.smoothScroll = true;
+
+    // tocify
+    var toc = $("#TOC").tocify(options).data("toc-tocify");
+});
+</script>
 
 <!-- dynamically load mathjax for compatibility with self-contained -->
 <script>

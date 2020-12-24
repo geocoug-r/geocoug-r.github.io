@@ -1,9 +1,5 @@
 ---
-title: "db"
-output: 
-  html_document:
-    toc: TRUE
-    code_folding: hide
+title: "Database"
 ---
 
 
@@ -12,7 +8,7 @@ knitr::opts_chunk$set(echo = T, warning = F, message = F)
 ```
 
 
-```{r include=F}
+```{r, include=F}
 ## Load packages
 library(DBI)
 library(RPostgres)
@@ -26,9 +22,11 @@ library(rmarkdown)
 library(DT)
 ```
 
+# Resources
+* [DT::datatables - options](https://datatables.net/reference/option/)
 
-## Database connection
-```{r dbconn, echo=T}
+# Database connection
+```{r dbconn, class.source='fold-show'}
 pass <- readLines("../../pwd.txt")
 
 conn <- DBI::dbConnect(
@@ -42,34 +40,20 @@ conn <- DBI::dbConnect(
 ```
 
 
-## DB query
-
-[datatables - options](https://datatables.net/reference/option/)
-```{r dbquery, out.width="50%"}
-tbls <- dbListTables(conn)
-
+# DB query
+```{r dbquery, class.source='fold-show'}
+# tbls <- dbListTables(conn)
 sql <- glue("SELECT * FROM sleepdata")
 res <- dbGetQuery(conn, sql)
+# cols <- names(res)
 
-cols <- names(res)
-
-#paged_table(res, options=list(rows.print=10))
-
-# datatable(res, 
-#           extensions = 'FixedColumns' #, # freeze left most column in a scrolling datatable
-#           # options = list(
-#           #   dom = 't', # Define table control elements to appear on page and in what order
-#           #   scrollX = TRUE, # horizontal scrolling (scrollY = vertical scrolling)
-#           #   # scrollCollapse = TRUE # allow table to reduce in height when a limited number of rows are shown
-#           #   paging = TRUE
-#           # )
-# )
-
-datatable(res)
+datatable(res, options=list(scrollX=T))
 ```
 
+# Plots
+
 ## Sleep quality
-```{r sleepquality, echo=T}
+```{r sleepquality}
 plt1 <- ggplot(res, aes(x=start_time, y=sleep_quality)) +
   geom_line(color="blue", size=1) +
   ylab("Sleep Quality") +
@@ -78,7 +62,7 @@ plt1
 ```
 
 ## Steps
-```{r steps, echo=T}
+```{r steps}
 plt2 <- ggplot(res, aes(x=start_time, y=steps)) +
   geom_line(color="red", size=1) +
   ylab("Steps") +
@@ -87,7 +71,7 @@ plt2
 ```
 
 ## Sleep time
-```{r sleeptime, echo=T}
+```{r sleeptime}
 plt3 <- ggplot(res, aes(x=start_time, y=(seconds_asleep / 60) / 60)) +
   geom_line(color="purple", size=1) +
   ylab("Hours Asleep") +
@@ -96,7 +80,7 @@ plt3
 ```
 
 ## Movement
-```{r movement, echo=T}
+```{r movement}
 plt4 <- ggplot(res, aes(x=start_time, y=movements_per_hour)) +
   geom_line(color="red", size=1) +
   ylab("Movements per hour") +
@@ -105,7 +89,7 @@ plt4
 ```
 
 ## Time until sleep
-```{r tts, echo=T}
+```{r tts}
 plt5 <- ggplot(res, aes(x=start_time, y=seconds_until_sleep / 60)) +
   geom_line(color="red", size=1) +
   ylab("Minutes until sleep") +

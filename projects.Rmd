@@ -1,9 +1,5 @@
 ---
 title: "Projects"
-output:
-  html_document:
-    toc: TRUE
-    code_folding: hide
 ---
 
 ```{r setup, include=FALSE}
@@ -23,6 +19,7 @@ Bill to CF2167.0101 (SAP)
 
 RAL = Remedial Action Level
 OC = Organic Carbon
+LAET = Lowest Apparent Effects Threshold
 
 [Working Directory](\\pfs1w\CF1100-CF3999\CF2167_BayerLDW_MC\Working_Files\DataMgmt\IDB\imports\20201207_load_PDI-PhI)
 

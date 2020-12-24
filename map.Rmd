@@ -1,9 +1,5 @@
 ---
-title: "map"
-output: 
-  html_document:
-    toc: FALSE
-    code_folding: hide
+title: "Map"
 ---
 
 ```{r setup, include=FALSE}
@@ -15,12 +11,13 @@ library(leaflet)
 library(dplyr)
 ```
 
+## Leaflet
 Use the leaflet map below to explore.
-```{r}
+```{r, class.source='fold-show'}
 leaflet() %>% 
-  setView(lng=-122.594488, lat=47.174515, zoom=16) %>% 
+  setView(lng=-122.90486, lat=47.03576, zoom=16) %>% 
   addTiles() %>% 
-  addMarkers(lng=-122.594488, lat=47.174515, popup="Home")
+  addMarkers(lng=-122.90486, lat=47.03576, popup="WA State Capitol")
 ```
 
 

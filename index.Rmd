@@ -1,21 +1,15 @@
 ---
 title: "Home"
-output:
-  html_document:
-    toc: TRUE
-    code_folding: hide
-editor_options:
-  chunk_output_type: console
 ---
 
 ```{r setup, include=FALSE}
-knitr::opts_chunk$set(echo = TRUE)
+knitr::opts_chunk$set(echo = T, warning = F, message = F)
 ```
 
 
-# Packages
 
 ```{r pkgs, eval = F}
+# Still need to figure out what this is actually doing
 if (!require(librarian)){
   remotes::install_github("DesiQuintans/librarian")
   library(librarian)
@@ -25,7 +19,7 @@ shelf(
   DBI, RPostgres,
   # spatial
   ggmap, leaflet, 
-  r-spatial/mapview, # https://github.com/r-spatial/mapview/issues/324
+  r-spatial/mapview,
   sf, sp,
   # tidyverse
   dplyr, purrr, readr, tibble, tidyr,
@@ -38,33 +32,26 @@ shelf(
 here <- here::here
 ```
 
-<br>
-
 # References
 
   - [R Markdown Basics](https://rmarkdown.rstudio.com/authoring_basics.html)
   - [R Markdown Reference Guide](https://bookdown.org/yihui/rmarkdown/)
   - [Flexdashboard](https://rmarkdown.rstudio.com/flexdashboard/)
-
-<br>
-
-# Data
-
   - [Awesome public datasets](https://github.com/awesomedata/awesome-public-datasets)
   
-<br>
+# Languages
 
-# Markdown Syntax
+## R
+```{r, eval=F}
 
-<br>
+```
 
-# Other Languages
 
 ## SQL
 
 ### Option 1
 Create connection chunk, then call connection in each subsequent chunk.
-```{r}
+```{r connSQL, class.source='fold-show'}
 library(DBI)
 
 pass <- readLines("../../pwd.txt")
@@ -79,13 +66,13 @@ db = dbConnect(
 )
 ```
 
-```{sql, connection=db}
+```{sql, connection=db, eval=F}
 select * from sleepdata
 ```
 
 ### Option 2
 Set default connection in the setup chunk (pretend its the setup chunk).
-```{r setup-v2, eval=F}
+```{r setup-v2, eval=F, class.source='fold-show'}
 library(DBI)
 db = dbConnect(
   RPostgres::Postgres(),
@@ -103,40 +90,39 @@ Then you dont have to specify the connection for each chunk.
 select * from sleepdata
 ```
 
-<br>
 
 ## Python
 To use the Python engine, you need to call `library(reticulate)` [link](https://rstudio.github.io/reticulate/)
-```{r}
+```{r, class.source='fold-show'}
 # install.packages("reticulate")
 library(reticulate)
 
 # Use specific Python installation
-use_python("C:/Python37")
+# use_python("C:/Python37")
 
 # Use conda environment
 use_condaenv("dev")
 ```
 
 Now you can run Python code
-```{python}
+```{python, class.source='fold-show'}
 x = 4 * 4
 print(x)
 ```
 
 You can import libraries as normal
-```{python}
+```{python, class.source='fold-show'}
 import pandas as pd
 
 vals = {"col1": ['a', 'b', 'c', 'd'], "col2": [1, 10, 100, 1000]}
 df = pd.DataFrame(vals)
+print(df)
 ```
 
 Access objects created within Python chunks from R using `py$<var>`
-```{r}
+```{r, class.source='fold-show'}
 library(DT)
-dt = datatable(py$df)
-dt
+datatable(py$df)
 ```
 
 
