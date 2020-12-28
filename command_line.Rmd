@@ -1,0 +1,46 @@
+---
+title: "Command Line"
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = T, warning = F, message = F)
+```
+
+---
+
+# Operating System Commands
+
+## General
+[SS64](https://ss64.com/)<br>
+Reference guide containing syntax and examples for the most prevalent computing commands (Database and Operating System).<br>
+
+## Windows
+
+### CMD
+[Microsoft Docs](https://docs.microsoft.com/en-us/windows-server/administration/windows-commands/cmd)<br>
+Command line syntax
+
+**Syntax**: `cmd [/c|/k] [/s] [/q] [/d] [/a|/u] [/t:{<b><f> | <f>}] [/e:{on | off}] [/f:{on | off}] [/v:{on | off}] [<string>]`
+
+**Multiple commands**: `"<command1>&&<command2>&&<command3>"`
+
+#### Parameters
+```{r cmd, echo=F}
+# library(tidyverse)
+# library(readxl)
+library(DT)
+f <- "./static/cmd.csv"
+tbl <- read.csv(f)
+
+# Show all rows in table (no pagination)
+datatable(tbl, options=list(paging=FALSE))
+```
+
+
+## Linux
+
+---
+
+# Database Commands
+
+## PostgreSQL

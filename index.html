@@ -11,9 +11,9 @@
 
 
 
-<title>Home</title>
+<title>Welcome</title>
 
-<script src="site_libs/jquery-1.12.4/jquery.min.js"></script>
+<script src="site_libs/jquery-1.11.3/jquery.min.js"></script>
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <link href="site_libs/bootstrap-3.3.5/css/flatly.min.css" rel="stylesheet" />
 <script src="site_libs/bootstrap-3.3.5/js/bootstrap.min.js"></script>
@@ -28,14 +28,8 @@
 <script src="site_libs/highlightjs-9.12.0/highlight.js"></script>
 <link href="site_libs/pagedtable-1.1/css/pagedtable.css" rel="stylesheet" />
 <script src="site_libs/pagedtable-1.1/js/pagedtable.js"></script>
-<script src="site_libs/htmlwidgets-1.5.2/htmlwidgets.js"></script>
-<link href="site_libs/datatables-css-0.0.0/datatables-crosstalk.css" rel="stylesheet" />
-<script src="site_libs/datatables-binding-0.16/datatables.js"></script>
-<link href="site_libs/dt-core-1.10.20/css/jquery.dataTables.min.css" rel="stylesheet" />
-<link href="site_libs/dt-core-1.10.20/css/jquery.dataTables.extra.css" rel="stylesheet" />
-<script src="site_libs/dt-core-1.10.20/js/jquery.dataTables.min.js"></script>
-<link href="site_libs/crosstalk-1.1.0.1/css/crosstalk.css" rel="stylesheet" />
-<script src="site_libs/crosstalk-1.1.0.1/js/crosstalk.min.js"></script>
+<link href="site_libs/font-awesome-5.1.0/css/all.css" rel="stylesheet" />
+<link href="site_libs/font-awesome-5.1.0/css/v4-shims.css" rel="stylesheet" />
 
 <style type="text/css">
   code{white-space: pre-wrap;}
@@ -375,20 +369,25 @@ div.tocify {
   <a href="index.html">Home</a>
 </li>
 <li>
-  <a href="map.html">Map</a>
+  <a href="rstudio_ref.html">RStudio</a>
 </li>
 <li>
-  <a href="db.html">Database</a>
+  <a href="data_mgmnt.html">Data Management</a>
 </li>
 <li>
-  <a href="lab.html">Lab Data</a>
-</li>
-<li>
-  <a href="data_management.html">Data Management</a>
+  <a href="command_line.html">Command Line</a>
 </li>
       </ul>
       <ul class="nav navbar-nav navbar-right">
-        
+        <li>
+  <a href="https://geocoug.github.io">Portfolio</a>
+</li>
+<li>
+  <a href="https://github.com/geocoug">
+    <span class="fab fa-github"></span>
+     
+  </a>
+</li>
       </ul>
     </div><!--/.nav-collapse -->
   </div><!--/.container -->
@@ -406,115 +405,12 @@ div.tocify {
 
 
 
-<h1 class="title toc-ignore">Home</h1>
+<h1 class="title toc-ignore">Welcome</h1>
 
 </div>
 
 
-<pre class="r"><code># Still need to figure out what this is actually doing
-if (!require(librarian)){
-  remotes::install_github(&quot;DesiQuintans/librarian&quot;)
-  library(librarian)
-}
-shelf(
-  # database
-  DBI, RPostgres,
-  # spatial
-  ggmap, leaflet, 
-  r-spatial/mapview,
-  sf, sp,
-  # tidyverse
-  dplyr, purrr, readr, tibble, tidyr,
-  # todo: use these
-  # googledrive,
-  # report
-  DT, gt, htmltools, htmlwidgets, kableExtra, knitr, markdown, rmarkdown, shiny, webshot,
-  # utility
-  fs, glue, here, png, scales, stringr, urltools)
-here &lt;- here::here</code></pre>
-<div id="references" class="section level1">
-<h1>References</h1>
-<ul>
-<li><a href="https://rmarkdown.rstudio.com/authoring_basics.html">R Markdown Basics</a></li>
-<li><a href="https://bookdown.org/yihui/rmarkdown/">R Markdown Reference Guide</a></li>
-<li><a href="https://rmarkdown.rstudio.com/flexdashboard/">Flexdashboard</a></li>
-<li><a href="https://github.com/awesomedata/awesome-public-datasets">Awesome public datasets</a></li>
-</ul>
-</div>
-<div id="languages" class="section level1">
-<h1>Languages</h1>
-<div id="r" class="section level2">
-<h2>R</h2>
-</div>
-<div id="sql" class="section level2">
-<h2>SQL</h2>
-<div id="option-1" class="section level3">
-<h3>Option 1</h3>
-<p>Create connection chunk, then call connection in each subsequent chunk.</p>
-<pre class="r fold-show"><code>library(DBI)
-
-pass &lt;- readLines(&quot;../../pwd.txt&quot;)
-
-db = dbConnect(
-  RPostgres::Postgres(),
-  dbname   = &quot;personal&quot;,
-  host     = &quot;localhost&quot;,
-  port     = 5432,
-  user     = &quot;cgrant&quot;,
-  password = pass
-)</code></pre>
-<pre class="sql"><code>select * from sleepdata</code></pre>
-</div>
-<div id="option-2" class="section level3">
-<h3>Option 2</h3>
-<p>Set default connection in the setup chunk (pretend its the setup chunk).</p>
-<pre class="r fold-show"><code>library(DBI)
-db = dbConnect(
-  RPostgres::Postgres(),
-  dbname   = &quot;personal&quot;,
-  host     = &quot;localhost&quot;,
-  port     = 5432,
-  user     = &quot;cgrant&quot;,
-  password = pass
-)
-knitr::opts_chunk$set(connection = &quot;db&quot;)</code></pre>
-<p>Then you dont have to specify the connection for each chunk.</p>
-<pre class="sql"><code>select * from sleepdata</code></pre>
-</div>
-</div>
-<div id="python" class="section level2">
-<h2>Python</h2>
-<p>To use the Python engine, you need to call <code>library(reticulate)</code> <a href="https://rstudio.github.io/reticulate/">link</a></p>
-<pre class="r fold-show"><code># install.packages(&quot;reticulate&quot;)
-library(reticulate)
-
-# Use specific Python installation
-# use_python(&quot;C:/Python37&quot;)
-
-# Use conda environment
-use_condaenv(&quot;dev&quot;)</code></pre>
-<p>Now you can run Python code</p>
-<pre class="python fold-show"><code>x = 4 * 4
-print(x)</code></pre>
-<pre><code>## 16</code></pre>
-<p>You can import libraries as normal</p>
-<pre class="python fold-show"><code>import pandas as pd
-
-vals = {&quot;col1&quot;: [&#39;a&#39;, &#39;b&#39;, &#39;c&#39;, &#39;d&#39;], &quot;col2&quot;: [1, 10, 100, 1000]}
-df = pd.DataFrame(vals)
-print(df)</code></pre>
-<pre><code>##   col1  col2
-## 0    a     1
-## 1    b    10
-## 2    c   100
-## 3    d  1000</code></pre>
-<p>Access objects created within Python chunks from R using <code>py$&lt;var&gt;</code></p>
-<pre class="r fold-show"><code>library(DT)
-datatable(py$df)</code></pre>
-<div id="htmlwidget-ab85b6a83abd7b3673ca" style="width:100%;height:auto;" class="datatables html-widget"></div>
-<script type="application/json" data-for="htmlwidget-ab85b6a83abd7b3673ca">{"x":{"filter":"none","data":[["1","2","3","4"],["a","b","c","d"],[1,10,100,1000]],"container":"<table class=\"display\">\n  <thead>\n    <tr>\n      <th> <\/th>\n      <th>col1<\/th>\n      <th>col2<\/th>\n    <\/tr>\n  <\/thead>\n<\/table>","options":{"columnDefs":[{"className":"dt-right","targets":2},{"orderable":false,"targets":0}],"order":[],"autoWidth":false,"orderClasses":false}},"evals":[],"jsHooks":[]}</script>
-</div>
-</div>
+<p>The purpose of this site is to compile resources I use on a regular basis into a centralized space, while learning how to use RStudio.</p>
 
 
 

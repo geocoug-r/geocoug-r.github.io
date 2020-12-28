@@ -5,18 +5,17 @@ navbar:
   left:
     - text: "Home"
       href: index.html
-    - text: "Map"
-      href: map.html
-    - text: "Database"
-      href: db.html
-    - text: "Lab Data"
-      href: lab.html
-    # - text: "Dashboard"
-    #   href: dashboard.html
-    # - text: "Projects"
-    #   href: projects.html
+    - text: "RStudio"
+      href: rstudio_ref.html
     - text: "Data Management"
-      href: data_management.html
+      href: data_mgmnt.html
+    - text: "Command Line"
+      href: command_line.html
+  right:
+    - text: "Portfolio"
+      href: https://geocoug.github.io
+    - icon: fab fa-github
+      href: https://github.com/geocoug
 output:
   html_document:
     theme: flatly

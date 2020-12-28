@@ -11,7 +11,7 @@
 
 
 
-<title>Map</title>
+<title>Command Line</title>
 
 <script src="site_libs/jquery-1.12.4/jquery.min.js"></script>
 <meta name="viewport" content="width=device-width, initial-scale=1" />
@@ -29,13 +29,15 @@
 <link href="site_libs/pagedtable-1.1/css/pagedtable.css" rel="stylesheet" />
 <script src="site_libs/pagedtable-1.1/js/pagedtable.js"></script>
 <script src="site_libs/htmlwidgets-1.5.2/htmlwidgets.js"></script>
-<link href="site_libs/leaflet-1.3.1/leaflet.css" rel="stylesheet" />
-<script src="site_libs/leaflet-1.3.1/leaflet.js"></script>
-<link href="site_libs/leafletfix-1.0.0/leafletfix.css" rel="stylesheet" />
-<script src="site_libs/Proj4Leaflet-1.0.1/proj4-compressed.js"></script>
-<script src="site_libs/Proj4Leaflet-1.0.1/proj4leaflet.js"></script>
-<link href="site_libs/rstudio_leaflet-1.3.1/rstudio_leaflet.css" rel="stylesheet" />
-<script src="site_libs/leaflet-binding-2.0.3/leaflet.js"></script>
+<link href="site_libs/datatables-css-0.0.0/datatables-crosstalk.css" rel="stylesheet" />
+<script src="site_libs/datatables-binding-0.16/datatables.js"></script>
+<link href="site_libs/dt-core-1.10.20/css/jquery.dataTables.min.css" rel="stylesheet" />
+<link href="site_libs/dt-core-1.10.20/css/jquery.dataTables.extra.css" rel="stylesheet" />
+<script src="site_libs/dt-core-1.10.20/js/jquery.dataTables.min.js"></script>
+<link href="site_libs/crosstalk-1.1.0.1/css/crosstalk.css" rel="stylesheet" />
+<script src="site_libs/crosstalk-1.1.0.1/js/crosstalk.min.js"></script>
+<link href="site_libs/font-awesome-5.1.0/css/all.css" rel="stylesheet" />
+<link href="site_libs/font-awesome-5.1.0/css/v4-shims.css" rel="stylesheet" />
 
 <style type="text/css">
   code{white-space: pre-wrap;}
@@ -375,20 +377,25 @@ div.tocify {
   <a href="index.html">Home</a>
 </li>
 <li>
-  <a href="map.html">Map</a>
+  <a href="rstudio_ref.html">RStudio</a>
 </li>
 <li>
-  <a href="db.html">Database</a>
+  <a href="data_mgmnt.html">Data Management</a>
 </li>
 <li>
-  <a href="lab.html">Lab Data</a>
-</li>
-<li>
-  <a href="data_management.html">Data Management</a>
+  <a href="command_line.html">Command Line</a>
 </li>
       </ul>
       <ul class="nav navbar-nav navbar-right">
-        
+        <li>
+  <a href="https://geocoug.github.io">Portfolio</a>
+</li>
+<li>
+  <a href="https://github.com/geocoug">
+    <span class="fab fa-github"></span>
+     
+  </a>
+</li>
       </ul>
     </div><!--/.nav-collapse -->
   </div><!--/.container -->
@@ -406,20 +413,42 @@ div.tocify {
 
 
 
-<h1 class="title toc-ignore">Map</h1>
+<h1 class="title toc-ignore">Command Line</h1>
 
 </div>
 
 
-<div id="leaflet" class="section level2">
-<h2>Leaflet</h2>
-<p>Use the leaflet map below to explore.</p>
-<pre class="r fold-show"><code>leaflet() %&gt;% 
-  setView(lng=-122.90486, lat=47.03576, zoom=16) %&gt;% 
-  addTiles() %&gt;% 
-  addMarkers(lng=-122.90486, lat=47.03576, popup=&quot;WA State Capitol&quot;)</code></pre>
-<div id="htmlwidget-435483efb76a06d72667" style="width:672px;height:480px;" class="leaflet html-widget"></div>
-<script type="application/json" data-for="htmlwidget-435483efb76a06d72667">{"x":{"options":{"crs":{"crsClass":"L.CRS.EPSG3857","code":null,"proj4def":null,"projectedBounds":null,"options":{}}},"setView":[[47.03576,-122.90486],16,[]],"calls":[{"method":"addTiles","args":["//{s}.tile.openstreetmap.org/{z}/{x}/{y}.png",null,null,{"minZoom":0,"maxZoom":18,"tileSize":256,"subdomains":"abc","errorTileUrl":"","tms":false,"noWrap":false,"zoomOffset":0,"zoomReverse":false,"opacity":1,"zIndex":1,"detectRetina":false,"attribution":"&copy; <a href=\"http://openstreetmap.org\">OpenStreetMap<\/a> contributors, <a href=\"http://creativecommons.org/licenses/by-sa/2.0/\">CC-BY-SA<\/a>"}]},{"method":"addMarkers","args":[47.03576,-122.90486,null,null,null,{"interactive":true,"draggable":false,"keyboard":true,"title":"","alt":"","zIndexOffset":0,"opacity":1,"riseOnHover":false,"riseOffset":250},"WA State Capitol",null,null,null,null,{"interactive":false,"permanent":false,"direction":"auto","opacity":1,"offset":[0,0],"textsize":"10px","textOnly":false,"className":"","sticky":true},null]}],"limits":{"lat":[47.03576,47.03576],"lng":[-122.90486,-122.90486]}},"evals":[],"jsHooks":[]}</script>
+<hr />
+<div id="operating-system-commands" class="section level1">
+<h1>Operating System Commands</h1>
+<div id="general" class="section level2">
+<h2>General</h2>
+<p><a href="https://ss64.com/">SS64</a><br> Reference guide containing syntax and examples for the most prevalent computing commands (Database and Operating System).<br></p>
+</div>
+<div id="windows" class="section level2">
+<h2>Windows</h2>
+<div id="cmd" class="section level3">
+<h3>CMD</h3>
+<p><a href="https://docs.microsoft.com/en-us/windows-server/administration/windows-commands/cmd">Microsoft Docs</a><br> Command line syntax</p>
+<p><strong>Syntax</strong>: <code>cmd [/c|/k] [/s] [/q] [/d] [/a|/u] [/t:{&lt;b&gt;&lt;f&gt; | &lt;f&gt;}] [/e:{on | off}] [/f:{on | off}] [/v:{on | off}] [&lt;string&gt;]</code></p>
+<p><strong>Multiple commands</strong>: <code>"&lt;command1&gt;&amp;&amp;&lt;command2&gt;&amp;&amp;&lt;command3&gt;"</code></p>
+<div id="parameters" class="section level4">
+<h4>Parameters</h4>
+<div id="htmlwidget-b525a791b865e177bd4d" style="width:100%;height:auto;" class="datatables html-widget"></div>
+<script type="application/json" data-for="htmlwidget-b525a791b865e177bd4d">{"x":{"filter":"none","data":[["1","2","3","4","5","6","7","8","9","10","11","12","13","14","15","16"],["/c ","/k ","/s ","/q ","/d ","/a ","/u ","/t:{&lt;b&gt;&lt;f&gt; &lt;f&gt;} ","/e:on ","/e:off ","/f:on ","/f:off ","/v:on ","/v:off ","&lt;string&gt; ","/? "],["Carries out the command specified by string and then stops. ","Carries out the command specified by string and continues. ","Modifies the treatment of string after /c or /k. ","Turns the echo off. ","Disables execution of AutoRun commands. ","Formats internal command output to a pipe or a file as American National Standards Institute (ANSI). ","Formats internal command output to a pipe or a file as Unicode. ","Sets the background (b) and foreground (f) colors.","Enables command extensions. ","Disables commands extensions. ","Enables file and directory name completion. ","Disables file and directory name completion. ","Enables delayed environment variable expansion. ","Disables delayed environment variable expansion. ","Specifies the command you want to carry out. ","Displays help at the command prompt."]],"container":"<table class=\"display\">\n  <thead>\n    <tr>\n      <th> <\/th>\n      <th>ï..Parameter<\/th>\n      <th>Description<\/th>\n    <\/tr>\n  <\/thead>\n<\/table>","options":{"paging":false,"order":[],"autoWidth":false,"orderClasses":false,"columnDefs":[{"orderable":false,"targets":0}]}},"evals":[],"jsHooks":[]}</script>
+</div>
+</div>
+</div>
+<div id="linux" class="section level2">
+<h2>Linux</h2>
+<hr />
+</div>
+</div>
+<div id="database-commands" class="section level1">
+<h1>Database Commands</h1>
+<div id="postgresql" class="section level2">
+<h2>PostgreSQL</h2>
+</div>
 </div>
 
 
