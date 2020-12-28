@@ -36,11 +36,17 @@ tbl <- read.csv(f)
 datatable(tbl, options=list(paging=FALSE))
 ```
 
+### Powershell
+
 
 ## Linux
+
+### Bash
 
 ---
 
 # Database Commands
+
+## General
 
 ## PostgreSQL

@@ -12,10 +12,10 @@ navbar:
     - text: "Command Line"
       href: command_line.html
   right:
-    - text: "Portfolio"
+    - icon: fab fa-github fa-lg
       href: https://geocoug.github.io
-    - icon: fab fa-github
-      href: https://github.com/geocoug
+    - icon: fab fa-linkedin fa-lg
+      href: https://www.linkedin.com/in/caleb-grant-04b098101
 output:
   html_document:
     theme: flatly
@@ -25,9 +25,9 @@ output:
     # number_sections: TRUE
     df_print: paged # default, kable, tibble
     code_folding: hide
-    # includes:
-      # in_header: _.html
+    includes:
+      in_header: header.html
       # before_body: _.html
-      # after_body: _.html
+      after_body: footer.html
 output_dir: "."
   

@@ -6,5 +6,10 @@ title: "Welcome"
 knitr::opts_chunk$set(echo = T, warning = F, message = F)
 ```
 
-The purpose of this site is to compile resources I use on a regular basis into a centralized space, while learning how to use RStudio.
+---
+
+# Purpose
+The purpose of this site is to learn about RStudio and how to create websites using R Markdown. My intention is to compile resources I use on a regular basis into an organized toolkit.
+
+Check out some of my other work on [Github](https://geocoug.github.io).
 
