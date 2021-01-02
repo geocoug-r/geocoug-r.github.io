@@ -386,6 +386,9 @@ div.tocify {
 <li>
   <a href="command_line.html">Command Line</a>
 </li>
+<li>
+  <a href="queries.html">Queries</a>
+</li>
       </ul>
       <ul class="nav navbar-nav navbar-right">
         <li>
@@ -439,7 +442,7 @@ div.tocify {
 <div id="parameters" class="section level4">
 <h4>Parameters</h4>
 <div id="htmlwidget-b525a791b865e177bd4d" style="width:100%;height:auto;" class="datatables html-widget"></div>
-<script type="application/json" data-for="htmlwidget-b525a791b865e177bd4d">{"x":{"filter":"none","data":[["1","2","3","4","5","6","7","8","9","10","11","12","13","14","15","16"],["/c ","/k ","/s ","/q ","/d ","/a ","/u ","/t:{&lt;b&gt;&lt;f&gt; &lt;f&gt;} ","/e:on ","/e:off ","/f:on ","/f:off ","/v:on ","/v:off ","&lt;string&gt; ","/? "],["Carries out the command specified by string and then stops. ","Carries out the command specified by string and continues. ","Modifies the treatment of string after /c or /k. ","Turns the echo off. ","Disables execution of AutoRun commands. ","Formats internal command output to a pipe or a file as American National Standards Institute (ANSI). ","Formats internal command output to a pipe or a file as Unicode. ","Sets the background (b) and foreground (f) colors.","Enables command extensions. ","Disables commands extensions. ","Enables file and directory name completion. ","Disables file and directory name completion. ","Enables delayed environment variable expansion. ","Disables delayed environment variable expansion. ","Specifies the command you want to carry out. ","Displays help at the command prompt."]],"container":"<table class=\"display\">\n  <thead>\n    <tr>\n      <th> <\/th>\n      <th>ï..Parameter<\/th>\n      <th>Description<\/th>\n    <\/tr>\n  <\/thead>\n<\/table>","options":{"paging":false,"order":[],"autoWidth":false,"orderClasses":false,"columnDefs":[{"orderable":false,"targets":0}]}},"evals":[],"jsHooks":[]}</script>
+<script type="application/json" data-for="htmlwidget-b525a791b865e177bd4d">{"x":{"filter":"none","data":[["/c","/k","/s","/q","/d","/a","/u","/t:{&lt;b&gt;&lt;f&gt; &lt;f&gt;}","/e:on","/e:off","/f:on","/f:off","/v:on","/v:off","&lt;string&gt;","/?"],["Carries out the command specified by string and then stops.","Carries out the command specified by string and continues.","Modifies the treatment of string after /c or /k.","Turns the echo off.","Disables execution of AutoRun commands.","Formats internal command output to a pipe or a file as American National Standards Institute (ANSI).","Formats internal command output to a pipe or a file as Unicode.","Sets the background (b) and foreground (f) colors.","Enables command extensions.","Disables commands extensions.","Enables file and directory name completion.","Disables file and directory name completion.","Enables delayed environment variable expansion.","Disables delayed environment variable expansion.","Specifies the command you want to carry out.","Displays help at the command prompt."]],"container":"<table class=\"display\">\n  <thead>\n    <tr>\n      <th>Parameter<\/th>\n      <th>Description<\/th>\n    <\/tr>\n  <\/thead>\n<\/table>","options":{"paging":false,"order":[],"autoWidth":false,"orderClasses":false}},"evals":[],"jsHooks":[]}</script>
 </div>
 </div>
 <div id="powershell" class="section level3">
@@ -448,8 +451,32 @@ div.tocify {
 </div>
 <div id="linux" class="section level2">
 <h2>Linux</h2>
-<div id="bash" class="section level3">
-<h3>Bash</h3>
+<div id="commands" class="section level3">
+<h3>Commands</h3>
+<pre class="r"><code>t2 &lt;- read_excel(f, sheet=&quot;linux-commands&quot;)
+# Show all rows in table (no pagination)
+datatable(t2, options=list(paging=FALSE), rownames=F)</code></pre>
+<div id="htmlwidget-0494cb084ecbca4583e8" style="width:100%;height:auto;" class="datatables html-widget"></div>
+<script type="application/json" data-for="htmlwidget-0494cb084ecbca4583e8">{"x":{"filter":"none","data":[["sudo","apt-get","clear","pwd","cd","cd /","cd ~","cd ./","cd ~/Documents","ls","ls -l","ls -p","ls ~/Documents","su &lt;username&gt;","sudo su"],["Run as administrator (superuser do)","Install/uninstall programs","Clear terminal","Print working directory","Change directory","Change directory to absolute path from root","Home directory","Same directory","/home/&lt;username&gt;/Documents","List contents of directory","Shows contents and their permissions","Shows type of content","Example","Switch user","Switch to root user (full control of everything)"]],"container":"<table class=\"display\">\n  <thead>\n    <tr>\n      <th>Command<\/th>\n      <th>Detail<\/th>\n    <\/tr>\n  <\/thead>\n<\/table>","options":{"paging":false,"order":[],"autoWidth":false,"orderClasses":false}},"evals":[],"jsHooks":[]}</script>
+</div>
+<div id="file-system" class="section level3">
+<h3>File System</h3>
+<div id="htmlwidget-f5fe83d77f9a9bae04e3" style="width:100%;height:auto;" class="datatables html-widget"></div>
+<script type="application/json" data-for="htmlwidget-f5fe83d77f9a9bae04e3">{"x":{"filter":"none","data":[["\\","\\home","\\usr","\\usr\\share\\applications"],["Root directory","User directory","User binary files?","Applications"]],"container":"<table class=\"display\">\n  <thead>\n    <tr>\n      <th>Endpoint<\/th>\n      <th>Detail<\/th>\n    <\/tr>\n  <\/thead>\n<\/table>","options":{"paging":false,"order":[],"autoWidth":false,"orderClasses":false}},"evals":[],"jsHooks":[]}</script>
+</div>
+<div id="permissions" class="section level3">
+<h3>Permissions</h3>
+<p>General syntax: <code>_rwxrwxrwx 1 owner group</code><br></p>
+<p><code>_ | rwx | rwx | rwx</code> <Special><Owner><Group><All Users></p>
+<p><code>r</code> = Read<br> <code>w</code> = Write<br> <code>x</code> = Execute</p>
+<p><code>chown</code> = Change ownership<br> <code>chmod</code> = Change permissions<br></p>
+<p><code>sudo chown &lt;user&gt;:&lt;group&gt; &lt;file&gt;</code></p>
+<p><code>sudo chown 664 &lt;file&gt;</code></p>
+</div>
+<div id="package-manager" class="section level3">
+<h3>Package Manager</h3>
+<div id="htmlwidget-b2584e8fc8d6f9662547" style="width:100%;height:auto;" class="datatables html-widget"></div>
+<script type="application/json" data-for="htmlwidget-b2584e8fc8d6f9662547">{"x":{"filter":"none","data":[["apt-get","apt-get install &lt;program&gt;","apt-get remove","apt-cache search &lt;program&gt;*","apt-cache policy &lt;program&gt;","sudo dpkg -i ~/Downloads/&lt;package&gt;.deb","sudo apt-get upgrade"],["Package manager (works with .deb files)","Install a program (if exists in apt-get repository)","Remove a program","Search for a program in repository (* = wildcard)","Check if program is installed","Install .deb file/package","Upgrade all packages"]],"container":"<table class=\"display\">\n  <thead>\n    <tr>\n      <th>Command<\/th>\n      <th>Detail<\/th>\n    <\/tr>\n  <\/thead>\n<\/table>","options":{"paging":false,"order":[],"autoWidth":false,"orderClasses":false}},"evals":[],"jsHooks":[]}</script>
 <hr />
 </div>
 </div>

@@ -4,6 +4,11 @@ title: "Command Line"
 
 ```{r setup, include=FALSE}
 knitr::opts_chunk$set(echo = T, warning = F, message = F)
+library(tidyverse)
+library(readxl)
+library(DT)
+
+f <- "./static/commands.xlsx"
 ```
 
 ---
@@ -26,14 +31,9 @@ Command line syntax
 
 #### Parameters
 ```{r cmd, echo=F}
-# library(tidyverse)
-# library(readxl)
-library(DT)
-f <- "./static/cmd.csv"
-tbl <- read.csv(f)
-
+t1 <- read_excel(f, sheet="windows-commands")
 # Show all rows in table (no pagination)
-datatable(tbl, options=list(paging=FALSE))
+datatable(t1, options=list(paging=FALSE), rownames=F)
 ```
 
 ### Powershell
@@ -41,7 +41,43 @@ datatable(tbl, options=list(paging=FALSE))
 
 ## Linux
 
-### Bash
+### Commands
+```{r}
+t2 <- read_excel(f, sheet="linux-commands")
+# Show all rows in table (no pagination)
+datatable(t2, options=list(paging=FALSE), rownames=F)
+```
+
+### File System
+```{r, echo=F}
+t3 <- read_excel(f, sheet="linux-filesystem")
+# Show all rows in table (no pagination)
+datatable(t3, options=list(paging=FALSE), rownames=F)
+```
+
+### Permissions
+
+General syntax: `_rwxrwxrwx 1 owner group`<br>
+
+`_ | rwx | rwx | rwx` <Special><Owner><Group><All Users>
+
+`r` = Read<br>
+`w` = Write<br>
+`x` = Execute
+
+`chown` = Change ownership<br>
+`chmod` = Change permissions<br>
+
+`sudo chown <user>:<group> <file>`
+
+`sudo chown 664 <file>`
+
+### Package Manager
+```{r, echo=F}
+t4 <- read_excel(f, sheet="linux-packages")
+# Show all rows in table (no pagination)
+datatable(t4, options=list(paging=FALSE), rownames=F)
+```
 
 ---
 

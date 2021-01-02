@@ -11,6 +11,8 @@ navbar:
       href: data_mgmnt.html
     - text: "Command Line"
       href: command_line.html
+    - text: "Queries"
+      href: queries.html
   right:
     - icon: fab fa-github fa-lg
       href: https://geocoug.github.io
