@@ -7,6 +7,9 @@ knitr::opts_chunk$set(echo = T, warning = F, message = F)
 library(tidyverse)
 library(readxl)
 library(DT)
+#install.packages("remotes")
+#remotes::install_github("rstudio/fontawesome")
+library(fontawesome)
 
 f <- "./static/commands.xlsx"
 ```
@@ -36,8 +39,11 @@ t1 <- read_excel(f, sheet="windows-commands")
 datatable(t1, options=list(paging=FALSE), rownames=F)
 ```
 
-### Powershell
+### Powershell 
 
+<div style="display:inline;">`r fa("hard-hat")` `r fa("hammer")` Under construction...</div>
+
+---
 
 ## Linux
 
@@ -83,6 +89,4 @@ datatable(t4, options=list(paging=FALSE), rownames=F)
 
 # Database Commands
 
-## General
-
-## PostgreSQL
+<div style="display:inline;">`r fa("hard-hat")` `r fa("hammer")` Under construction...</div>

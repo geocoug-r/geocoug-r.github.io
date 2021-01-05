@@ -657,9 +657,9 @@ from d_location as loc
 </div>
 <div id="sequential-keys" class="section level2">
 <h2>Sequential Keys</h2>
-<p>– THIS CODE WILL RESET THE “seq_key” TO A SPECIFIC NUMBER</p>
+<p>Manually reset a sequential key.</p>
 <pre class="sql fold-show"><code>-- SQL THAT CREATED INITIAL SEQUENCE
-seq_key bigint NOT NULL DEFAULT nextval(&#39;d_dbhistory_seq_key_seq&#39;::regclass)
+-- seq_key bigint NOT NULL DEFAULT nextval(&#39;d_dbhistory_seq_key_seq&#39;::regclass)
 
 -- AFTER RUNNING THIS CODE, THE NEXT ROW TO BE INSERTED TO d_dbhistory
 --  WILL HAVE seq_key = 3

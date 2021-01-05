@@ -270,10 +270,10 @@ from d_location as loc
 
 ## Sequential Keys
 
--- THIS CODE WILL RESET THE "seq_key" TO A SPECIFIC NUMBER
+Manually reset a sequential key.
 ```{sql, eval=F, include=T, class.source='fold-show'}
 -- SQL THAT CREATED INITIAL SEQUENCE
-seq_key bigint NOT NULL DEFAULT nextval('d_dbhistory_seq_key_seq'::regclass)
+-- seq_key bigint NOT NULL DEFAULT nextval('d_dbhistory_seq_key_seq'::regclass)
 
 -- AFTER RUNNING THIS CODE, THE NEXT ROW TO BE INSERTED TO d_dbhistory
 --	WILL HAVE seq_key = 3

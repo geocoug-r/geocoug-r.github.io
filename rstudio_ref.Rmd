@@ -189,8 +189,7 @@ conn <- DBI::dbConnect(
 sql <- glue("SELECT * FROM sleepdata")
 res <- dbGetQuery(conn, sql)
 # cols <- names(res)
-
-datatable(res, options=list(scrollX=T))
+#datatable(res, options=list(scrollX=T))
 ```
 
 
@@ -198,19 +197,32 @@ datatable(res, options=list(scrollX=T))
 
 ## Steps
 ```{r steps}
-plt1 <- ggplot(res, aes(x=start_time, y=steps)) +
+plt1 <- ggplot(res, aes(x=as.Date(start_time), y=steps)) +
   geom_line(color="red", size=1) +
   ylab("Steps") +
-  xlab("Start Date")
+  xlab("Date") +
+  scale_x_date(date_labels="%b\n%Y")
 plt1
 ```
 
-## Sleep time
+## Sleep Time
 ```{r sleeptime}
-plt2 <- ggplot(res, aes(x=start_time, y=(seconds_asleep / 60) / 60)) +
+plt2 <- ggplot(res, aes(x=as.Date(start_time), y=(seconds_asleep / 60) / 60)) +
   geom_line(color="purple", size=1) +
   ylab("Hours Asleep") +
-  xlab("Start Date")
+  xlab("Date") +
+  scale_x_date(date_labels="%b\n%Y")
 plt2
 ```
+
+## Sleep Quality
+```{r sleepqual}
+plt3 <- ggplot(res, aes(x=as.Date(start_time), y=sleep_quality)) +
+  geom_line(color="blue", size=1) +
+  ylab("Sleep Quality") +
+  xlab("Date") +
+  scale_x_date(date_labels="%b\n%Y")
+plt3
+```
+
 
