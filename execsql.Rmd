@@ -1,0 +1,19 @@
+---
+title: "execsql"
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = T, warning = F, message = F)
+```
+
+---
+
+# Create Linux executable
+```{sql, eval=F, include=T, class.source='fold-show'}
+-- !x! rm_file ./test.sh
+-- !x! write "!#/bin/bash"             to ./test.sh
+-- !x! write "cd somedirectory"        to ./test.sh
+-- !x! write "program.py somefile.ext" to ./test.sh
+-- !x! system_cmd (chmod +x ./test.sh)
+-- !x! system_cmd (./test.sh)
+```

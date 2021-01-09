@@ -11,7 +11,7 @@
 
 
 
-<title>Welcome</title>
+<title>execsql</title>
 
 <script src="site_libs/jquery-1.11.3/jquery.min.js"></script>
 <meta name="viewport" content="width=device-width, initial-scale=1" />
@@ -415,16 +415,20 @@ div.tocify {
 
 
 
-<h1 class="title toc-ignore">Welcome</h1>
+<h1 class="title toc-ignore">execsql</h1>
 
 </div>
 
 
 <hr />
-<div id="purpose" class="section level1">
-<h1>Purpose</h1>
-<p>The purpose of this site is to learn about RStudio and how to create websites using R Markdown. My intention is to compile resources I use on a regular basis into an organized toolkit.</p>
-<p>Check out some of my other work on <a href="https://geocoug.github.io">Github</a>.</p>
+<div id="create-linux-executable" class="section level1">
+<h1>Create Linux executable</h1>
+<pre class="sql fold-show"><code>-- !x! rm_file ./test.sh
+-- !x! write &quot;!#/bin/bash&quot;             to ./test.sh
+-- !x! write &quot;cd somedirectory&quot;        to ./test.sh
+-- !x! write &quot;program.py somefile.ext&quot; to ./test.sh
+-- !x! system_cmd (chmod +x ./test.sh)
+-- !x! system_cmd (./test.sh)</code></pre>
 </div>
 
 <hr>
