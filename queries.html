@@ -639,6 +639,14 @@ order by usename, pid</code></pre>
 select * from pg_proc
 -- pg_aggregate is an extension of pg_proc.
 select * from pg_aggregate</code></pre>
+</div>
+<div id="list-users" class="section level1">
+<h1>List users</h1>
+<pre class="sql fold-show"><code>SELECT rolname FROM pg_roles;</code></pre>
+</div>
+<div id="list-tables-in-database" class="section level1">
+<h1>List tables in database</h1>
+<pre class="sql fold-show"><code>SELECT table_schema,table_name FROM information_schema.tables ORDER BY table_schema,table_name;</code></pre>
 <hr />
 </div>
 <div id="idb" class="section level1">

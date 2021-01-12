@@ -249,6 +249,16 @@ select * from pg_proc
 select * from pg_aggregate
 ```
 
+# List users
+```{sql, eval=F, include=T, class.source='fold-show'}
+SELECT rolname FROM pg_roles;
+```
+
+# List tables in database
+```{sql, eval=F, include=T, class.source='fold-show'}
+SELECT table_schema,table_name FROM information_schema.tables ORDER BY table_schema,table_name;
+```
+
 ---
 
 # IDB

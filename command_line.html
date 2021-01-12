@@ -493,11 +493,252 @@ datatable(t2, options=list(paging=FALSE), rownames=F)</code></pre>
 </div>
 <div id="database-commands" class="section level1">
 <h1>Database Commands</h1>
-<div style="display:inline;">
-<svg style="height:0.8em;top:.04em;position:relative;" viewBox="0 0 512 512">
-<path d="M480 288c0-80.25-49.28-148.92-119.19-177.62L320 192V80a16 16 0 0 0-16-16h-96a16 16 0 0 0-16 16v112l-40.81-81.62C81.28 139.08 32 207.75 32 288v64h448zm16 96H16a16 16 0 0 0-16 16v32a16 16 0 0 0 16 16h480a16 16 0 0 0 16-16v-32a16 16 0 0 0-16-16z"/>
-</svg>
-<svg style="height:0.8em;top:.04em;position:relative;" viewBox="0 0 576 512"><path d="M571.31 193.94l-22.63-22.63c-6.25-6.25-16.38-6.25-22.63 0l-11.31 11.31-28.9-28.9c5.63-21.31.36-44.9-16.35-61.61l-45.25-45.25c-62.48-62.48-163.79-62.48-226.28 0l90.51 45.25v18.75c0 16.97 6.74 33.25 18.75 45.25l49.14 49.14c16.71 16.71 40.3 21.98 61.61 16.35l28.9 28.9-11.31 11.31c-6.25 6.25-6.25 16.38 0 22.63l22.63 22.63c6.25 6.25 16.38 6.25 22.63 0l90.51-90.51c6.23-6.24 6.23-16.37-.02-22.62zm-286.72-15.2c-3.7-3.7-6.84-7.79-9.85-11.95L19.64 404.96c-25.57 23.88-26.26 64.19-1.53 88.93s65.05 24.05 88.93-1.53l238.13-255.07c-3.96-2.91-7.9-5.87-11.44-9.41l-49.14-49.14z"/></svg> Under construction…
+<div id="psql" class="section level2">
+<h2>psql</h2>
+<p><a href="https://quickref.me/postgres">Cheat sheet</a> <div id="htmlwidget-ab1c97fd142a608f2372" style="width:100%;height:auto;" class="datatables html-widget"></div>
+<script type="application/json" data-for="htmlwidget-ab1c97fd142a608f2372">{"x":{"filter":"none","data":[["sudo -s postgres psql","postgres=# \\l","postgres=# \\c postgres","postgres=# \\q","psql -d mydb","psql -U john mydb","psql -h localhost -p 5432 mydb","psql -U admin -h 192.168.1.5 -p 2506 -d mydb","psql -W mydb","psql -c '\\c postgres' -c '\\dt'","psql -c \"\\l+\" -H postgres &gt; database.html","psql -l","psql \\dt","psql mydb -f file.sql","psql -V","psql \\df &lt;schema&gt;","psql \\du","psql \\d &lt;table&gt;","psql \\d+ &lt;table&gt;"],["Connect to PostgreSQL as admin","List all databases","Connect to the database named postgres","Disconnect","Connecting to database","Connecting as a specific user","Connecting to a host/port","Connect remote PostgreSQL","Force password","Execute a SQL query or command","Generate HTML report","List all databases","Show all tables in a database","Execute commands from a file","Print the psql version","List functions in schema","Show current user permission","Describe table","Describe table with details"]],"container":"<table class=\"display\">\n  <thead>\n    <tr>\n      <th>Command<\/th>\n      <th>Detail<\/th>\n    <\/tr>\n  <\/thead>\n<\/table>","options":{"paging":false,"order":[],"autoWidth":false,"orderClasses":false}},"evals":[],"jsHooks":[]}</script></p>
+<div id="informational" class="section level3">
+<h3>Informational</h3>
+<table>
+<thead>
+<tr class="header">
+<th>Command</th>
+<th>Detail</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><code>\l[+]</code></td>
+<td>List all databases</td>
+</tr>
+<tr class="even">
+<td><code>\dn[S+]</code></td>
+<td>List schemas</td>
+</tr>
+<tr class="odd">
+<td><code>\di[S+]</code></td>
+<td>List indexes</td>
+</tr>
+<tr class="even">
+<td><code>\du[+]</code></td>
+<td>List roles</td>
+</tr>
+<tr class="odd">
+<td><code>\ds[S+]</code></td>
+<td>List sequences</td>
+</tr>
+<tr class="even">
+<td><code>\df[antw][S+]</code></td>
+<td>List functions</td>
+</tr>
+<tr class="odd">
+<td><code>\deu[+]</code></td>
+<td>List user mappings</td>
+</tr>
+<tr class="even">
+<td><code>\dv[S+]</code></td>
+<td>List views</td>
+</tr>
+<tr class="odd">
+<td><code>\dl</code></td>
+<td>List large objects</td>
+</tr>
+<tr class="even">
+<td><code>\dT[S+]</code></td>
+<td>List data types</td>
+</tr>
+<tr class="odd">
+<td><code>\da[S]</code></td>
+<td>List aggregates</td>
+</tr>
+<tr class="even">
+<td><code>\db[+]</code></td>
+<td>List tablespaces</td>
+</tr>
+<tr class="odd">
+<td><code>\dc[S+]</code></td>
+<td>List conversions</td>
+</tr>
+<tr class="even">
+<td><code>\dC[+]</code></td>
+<td>List casts</td>
+</tr>
+<tr class="odd">
+<td><code>\ddp</code></td>
+<td>List default privileges</td>
+</tr>
+<tr class="even">
+<td><code>\dd[S]</code></td>
+<td>Show object descriptions</td>
+</tr>
+<tr class="odd">
+<td><code>\dD[S+]</code></td>
+<td>List domains</td>
+</tr>
+<tr class="even">
+<td><code>\des[+]</code></td>
+<td>List foreign servers</td>
+</tr>
+<tr class="odd">
+<td><code>\dew[+]</code></td>
+<td>List foreign-data wrappers</td>
+</tr>
+<tr class="even">
+<td><code>\dF[+]</code></td>
+<td>List text search configurations</td>
+</tr>
+<tr class="odd">
+<td><code>\dFd[+]</code></td>
+<td>List text search dictionaries</td>
+</tr>
+<tr class="even">
+<td><code>\dFp[+]</code></td>
+<td>List text search parsers</td>
+</tr>
+<tr class="odd">
+<td><code>\dFt[+]</code></td>
+<td>List text search templates</td>
+</tr>
+<tr class="even">
+<td><code>\dL[S+]</code></td>
+<td>List procedural languages</td>
+</tr>
+<tr class="odd">
+<td><code>\do[S]</code></td>
+<td>List operators</td>
+</tr>
+<tr class="even">
+<td><code>\dO[S+]</code></td>
+<td>List collations</td>
+</tr>
+<tr class="odd">
+<td><code>\drds</code></td>
+<td>List per-database role settings</td>
+</tr>
+<tr class="even">
+<td><code>\dx[+]</code></td>
+<td>List extensions</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div id="formatting" class="section level3">
+<h3>Formatting</h3>
+<table>
+<thead>
+<tr class="header">
+<th>Command</th>
+<th>Detail</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><code>\a</code></td>
+<td>Toggle between unaligned and aligned</td>
+</tr>
+<tr class="even">
+<td><code>\C [STRING]</code></td>
+<td>Set table title, or unset if none</td>
+</tr>
+<tr class="odd">
+<td><code>\f [STRING]</code></td>
+<td>Show or set field separator for unaligned</td>
+</tr>
+<tr class="even">
+<td><code>\H</code></td>
+<td>Toggle HTML output mode</td>
+</tr>
+<tr class="odd">
+<td><code>\t [on|off]</code></td>
+<td>Show only rows</td>
+</tr>
+<tr class="even">
+<td><code>\T [STRING]</code></td>
+<td>Set or unset HTML &lt;table&gt; tag attributes</td>
+</tr>
+<tr class="odd">
+<td><code>\x [on|off]</code></td>
+<td>Toggle expanded output</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div id="inputoutput" class="section level3">
+<h3>Input/Output</h3>
+<table>
+<thead>
+<tr class="header">
+<th>Command</th>
+<th>Detail</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><code>\copy ...</code></td>
+<td>Import/export table</td>
+</tr>
+<tr class="even">
+<td><code>\echo [STRING]</code></td>
+<td>Print string</td>
+</tr>
+<tr class="odd">
+<td><code>\i FILE</code></td>
+<td>Execute file</td>
+</tr>
+<tr class="even">
+<td><code>\o [FILE]</code></td>
+<td>Export all results to file</td>
+</tr>
+<tr class="odd">
+<td><code>\qecho [STRING]</code></td>
+<td>String to output stream</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div id="backup" class="section level3">
+<h3>Backup</h3>
+<p>Use pg_dumpall to backup all databases</p>
+<p><code>$ pg_dumpall -U postgres &gt; all.sql</code></p>
+<p>Use pg_dump to backup a database</p>
+<p><code>$ pg_dump -d mydb -f mydb_backup.sql</code></p>
+<ul>
+<li>  <code>-a</code>   Dump only the data, not the schema</li>
+<li>  <code>-s</code>   Dump only the schema, no data</li>
+<li>  <code>-c</code>   Drop database before recreating</li>
+<li>  <code>-C</code>   Create database before restoring</li>
+<li>  <code>-t</code>   Dump the named table(s) only</li>
+<li>  <code>-F</code>   Format (<code>c</code>: custom, <code>d</code>: directory, <code>t</code>: tar)</li>
+</ul>
+<p>Use <code>pg_dump -?</code> to get the full list of options</p>
+</div>
+<div id="restore" class="section level3">
+<h3>Restore</h3>
+<div id="psql-1" class="section level4">
+<h4>psql</h4>
+<p><code>$ psql -U user mydb &lt; mydb_backup.sql</code></p>
+</div>
+<div id="pg_restore" class="section level4">
+<h4>pg_restore</h4>
+<p><code>$ pg_restore -d mydb mydb_backup.sql -c</code></p>
+<ul>
+<li><code>-U   Specify a database user</code></li>
+<li><code>-c   Drop database before recreating</code></li>
+<li><code>-C   Create database before restoring</code></li>
+<li><code>-e   Exit if an error has encountered</code></li>
+<li><code>-F   Format (c: custom, d: directory, t: tar, p: plain text sql(default))</code></li>
+</ul>
+<p>Use pg_restore -? to get the full list of options</p>
+</div>
+</div>
+<div id="export-table-to-csv" class="section level3">
+<h3>Export table to CSV</h3>
+<ul>
+<li><code>\copy table TO '&lt;path&gt;' CSV</code></li>
+<li><code>\copy table(col1,col1) TO '&lt;path&gt;' CSV</code></li>
+<li><code>\copy (SELECT...) TO '&lt;path&gt;' CSV</code></li>
+</ul>
+</div>
 </div>
 </div>
 

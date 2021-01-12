@@ -89,4 +89,110 @@ datatable(t4, options=list(paging=FALSE), rownames=F)
 
 # Database Commands
 
-<div style="display:inline;">`r fa("hard-hat")` `r fa("hammer")` Under construction...</div>
+## psql
+[Cheat sheet](https://quickref.me/postgres)
+```{r psql, echo=F}
+t4 <- read_excel(f, sheet="psql-commands")
+# Show all rows in table (no pagination)
+datatable(t4, options=list(paging=FALSE), rownames=F)
+```
+
+
+### Informational
+| Command               | Detail                                                |
+|-----------------|--------------------------------------------------|
+| `\l[+]`         | List all databases                               |
+| `\dn[S+]`       | List schemas                                     |
+| `\di[S+]`       | List indexes                                     |
+| `\du[+]`        | List roles                                       |
+| `\ds[S+]`       | List sequences                                   |
+| `\df[antw][S+]` | List functions                                   |
+| `\deu[+]`       | List user mappings                               |
+| `\dv[S+]`       | List views                                       |
+| `\dl`           | List large objects                               |
+| `\dT[S+]`       | List data types                                  |
+| `\da[S]`        | List aggregates                                  |
+| `\db[+]`        | List tablespaces                                 |
+| `\dc[S+]`       | List conversions                                 |
+| `\dC[+]`        | List casts                                       |
+| `\ddp`          | List default privileges                          |
+| `\dd[S]`        | Show object descriptions                         |
+| `\dD[S+]`       | List domains                                     |
+| `\des[+]`       | List foreign servers                             |
+| `\dew[+]`       | List foreign-data wrappers                       |
+| `\dF[+]`        | List text search configurations                  |
+| `\dFd[+]`       | List text search dictionaries                    |
+| `\dFp[+]`       | List text search parsers                         |
+| `\dFt[+]`       | List text search templates                       |
+| `\dL[S+]`       | List procedural languages                        |
+| `\do[S]`        | List operators                                   |
+| `\dO[S+]`       | List collations                                  |
+| `\drds`         | List per-database role settings                  |
+| `\dx[+]`        | List extensions                                  |
+
+
+### Formatting
+| Command              | Detail                                                      |
+|----------------|--------------------------------------------------------|
+| `\a`           | Toggle between unaligned and aligned                   |
+| `\C [STRING]`  | Set table title, or unset if none                      |
+| `\f [STRING]`  | Show or set field separator for unaligned              |
+| `\H`           | Toggle HTML output mode                                |
+| `\t [on|off]`  | Show only rows                                         |
+| `\T [STRING]`  | Set or unset HTML \<table\> tag attributes             |
+| `\x [on|off]`  | Toggle expanded output                                 |
+
+
+### Input/Output
+| Command                 | Detail                                                              |
+|-------------------|----------------------------------------------------------------|
+| `\copy ...`       | Import/export table                                            |
+| `\echo [STRING]`  | Print string                                                   |
+| `\i FILE`         | Execute file                                                   |
+| `\o [FILE]`       | Export all results to file                                     |
+| `\qecho [STRING]` | String to output stream                                        |
+
+
+
+### Backup
+Use pg_dumpall to backup all databases
+
+`$ pg_dumpall -U postgres > all.sql`
+
+Use pg_dump to backup a database
+
+`$ pg_dump -d mydb -f mydb_backup.sql`
+
+- &nbsp; `-a` &nbsp; Dump only the data, not the schema
+- &nbsp; `-s` &nbsp; Dump only the schema, no data
+- &nbsp; `-c` &nbsp; Drop database before recreating
+- &nbsp; `-C` &nbsp; Create database before restoring
+- &nbsp; `-t` &nbsp; Dump the named table(s) only
+- &nbsp; `-F` &nbsp; Format (`c`: custom, `d`: directory, `t`: tar)
+
+Use `pg_dump -?` to get the full list of options
+
+
+### Restore
+
+#### psql
+
+`$ psql -U user mydb < mydb_backup.sql`
+
+#### pg_restore
+
+`$ pg_restore -d mydb mydb_backup.sql -c`
+
+- `-U   Specify a database user`
+- `-c   Drop database before recreating`
+- `-C   Create database before restoring`
+- `-e   Exit if an error has encountered`
+- `-F   Format (c: custom, d: directory, t: tar, p: plain text sql(default))`
+
+Use pg_restore -? to get the full list of options
+
+
+### Export table to CSV
+- `\copy table TO '<path>' CSV`
+- `\copy table(col1,col1) TO '<path>' CSV`
+- `\copy (SELECT...) TO '<path>' CSV`
