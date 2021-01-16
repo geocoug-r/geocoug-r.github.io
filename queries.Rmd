@@ -290,3 +290,19 @@ Manually reset a sequential key.
 
 ALTER SEQUENCE d_dbhistory_seq_key_seq RESTART WITH 3;
 ```
+
+
+## TEQ Analytes
+```{sql, eval=F, include=T, class.source='fold-show'}
+select * from dblink(
+		'dbname=bayer_ldw',
+		'select analyte, full_name, chem_class, aliases, cas_rn from e_analyte'
+		) as d (
+	 	analyte text, full_name text, chem_class text, aliases text, cas_rn text
+	)
+where analyte in (
+	'TEQdfMamDL', 'TEQdfMamDL0', 'TEQdfMamDL/2', 'TEQdfpMamDL', 'TEQdfpMamDL/2', 'TEQdfpMamDL0',
+	'TEQdfBrdDL', 'TEQdfBrdDL0', 'TEQdfBrdDL/2', 'TEQdfpBrdDL', 'TEQdfpBrdDL/2', 'TEQdfpBrdDL0',
+	'TEQdfFshDL', 'TEQdfFshDL0', 'TEQdfFshDL/2', 'TEQdfpFshDL', 'TEQdfpFshDL/2', 'TEQdfpMamDL0'
+);
+```

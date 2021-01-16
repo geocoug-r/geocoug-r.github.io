@@ -677,6 +677,20 @@ from d_location as loc
 
 ALTER SEQUENCE d_dbhistory_seq_key_seq RESTART WITH 3;</code></pre>
 </div>
+<div id="teq-analytes" class="section level2">
+<h2>TEQ Analytes</h2>
+<pre class="sql fold-show"><code>select * from dblink(
+        &#39;dbname=bayer_ldw&#39;,
+        &#39;select analyte, full_name, chem_class, aliases, cas_rn from e_analyte&#39;
+        ) as d (
+        analyte text, full_name text, chem_class text, aliases text, cas_rn text
+    )
+where analyte in (
+    &#39;TEQdfMamDL&#39;, &#39;TEQdfMamDL0&#39;, &#39;TEQdfMamDL/2&#39;, &#39;TEQdfpMamDL&#39;, &#39;TEQdfpMamDL/2&#39;, &#39;TEQdfpMamDL0&#39;,
+    &#39;TEQdfBrdDL&#39;, &#39;TEQdfBrdDL0&#39;, &#39;TEQdfBrdDL/2&#39;, &#39;TEQdfpBrdDL&#39;, &#39;TEQdfpBrdDL/2&#39;, &#39;TEQdfpBrdDL0&#39;,
+    &#39;TEQdfFshDL&#39;, &#39;TEQdfFshDL0&#39;, &#39;TEQdfFshDL/2&#39;, &#39;TEQdfpFshDL&#39;, &#39;TEQdfpFshDL/2&#39;, &#39;TEQdfpMamDL0&#39;
+);</code></pre>
+</div>
 </div>
 
 <hr>

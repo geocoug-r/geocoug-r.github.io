@@ -11,7 +11,7 @@
 
 
 
-<title>Welcome</title>
+<title>Misc</title>
 
 <script src="site_libs/jquery-1.11.3/jquery.min.js"></script>
 <meta name="viewport" content="width=device-width, initial-scale=1" />
@@ -415,17 +415,50 @@ div.tocify {
 
 
 
-<h1 class="title toc-ignore">Welcome</h1>
+<h1 class="title toc-ignore">Misc</h1>
 
 </div>
 
 
 <hr />
-<div id="purpose" class="section level1">
-<h1>Purpose</h1>
-<p>The purpose of this site is to learn about RStudio and how to create websites using R Markdown. My intention is to compile resources I use on a regular basis into an organized toolkit.</p>
-<p>Check out some of my other work on <a href="https://geocoug.github.io">Github</a>.</p>
-</div>
+<pre class="r"><code># Still need to figure out what this is actually doing
+if (!require(librarian)){
+  remotes::install_github(&quot;DesiQuintans/librarian&quot;)
+  library(librarian)
+}
+
+shelf(
+  # database
+  DBI, RPostgres,
+  # tidyverse
+  dplyr, purrr, readr, tibble, tidyr,
+  # report
+  DT, knitr, markdown, rmarkdown,
+  # utility
+  fs, glue, here, png, scales, stringr, urltools, ggplot2)
+# here &lt;- here::here
+
+pass &lt;- readLines(&quot;../../pwd.txt&quot;)
+
+conn = dbConnect(
+  RPostgres::Postgres(),
+  dbname   = &quot;btc&quot;,
+  host     = &quot;localhost&quot;,
+  port     = 5432,
+  user     = &quot;cgrant&quot;,
+  password = pass
+)
+knitr::opts_chunk$set(echo = T, warning = F, message = F, connection = &quot;conn&quot;)</code></pre>
+<pre class="r"><code>sql &lt;- glue (&quot;SELECT * FROM public.bitcoin&quot;)
+res &lt;- dbGetQuery(conn, sql)</code></pre>
+<pre class="r"><code>plt &lt;- ggplot(res, aes(x=as.Date(updated), y=btc_price)) +
+  geom_line(color=&quot;red&quot;, size=1) +
+  ylab(&quot;BTC Price&quot;) +
+  xlab(&quot;Date&quot;) +
+  # scale_x_date(date_labels=&quot;%b\n%Y&quot;)
+  scale_x_date(date_labels=&#39;%m-%d-%YS&#39;)
+plt</code></pre>
+<p><img src="misc_files/figure-html/unnamed-chunk-2-1.png" width="672" /></p>
 
 <hr>
 
