@@ -491,210 +491,120 @@ datatable(t2, options=list(paging=FALSE), rownames=F)</code></pre>
 </div>
 </div>
 </div>
+<div id="git" class="section level1">
+<h1>Git</h1>
+<ul>
+<li><a href="https://product.hubspot.com/blog/git-and-github-tutorial-for-beginners">https://product.hubspot.com/blog/git-and-github-tutorial-for-beginners</a></li>
+<li><a href="https://docs.gitlab.com/ee/gitlab-basics/start-using-git.html">https://docs.gitlab.com/ee/gitlab-basics/start-using-git.html</a></li>
+</ul>
+<div id="configure-git" class="section level2">
+<h2>Configure Git</h2>
+<ol style="list-style-type: decimal">
+<li>Check configuration of Git on local PC: <code>git config --global --list</code></li>
+<li>Change your local credentials (username): <code>git config --global user.name "yourname"</code></li>
+<li>Change your local credentials (email): <code>git congif --global user.email "youremail"</code></li>
+</ol>
+</div>
+<div id="initialize" class="section level2">
+<h2>Initialize</h2>
+<ol style="list-style-type: decimal">
+<li>Launch Git Bash</li>
+<li>Navigate to project directory</li>
+<li>initialize git repository in the folder root: <code>git init</code></li>
+<li>create new file in directory: <code>touch filename.extension</code></li>
+<li>list files in root: <code>ls</code></li>
+<li>check which files git recognizes: <code>git status</code></li>
+</ol>
+</div>
+<div id="staging" class="section level2">
+<h2>Staging</h2>
+<p>A commit is a record of what files you have changed since the last time you made a commit. Essentially, you make changes to your repo (for example, adding a file or modifying one) and then tell git to put those files into a commit. Commits make up the essence of your project and allow you to go back to the state of a project at any point.</p>
+<p>So, how do you tell git which files to put into a commit? This is where the staging environment or index come in. When you make changes to your repo, git notices that a file has changed but won’t do anything with it (like adding it in a commit).</p>
+<p>To add a file to a commit, you first need to add it to the staging environment. To do this, you can use the <code>git add &lt;filename&gt;</code> command.</p>
+<p>Once you’ve used the git add command to add all the files you want to the staging environment, you can then tell git to package them into a commit using the git commit command. Note: The staging environment, also called ‘staging’, is the new preferred term for this, but you can also see it referred to as the ‘index’.</p>
+<ol style="list-style-type: decimal">
+<li>Add files to the staging environment: <code>git add filename.extension</code></li>
+<li>Check staging environment for new files: <code>git status</code></li>
+</ol>
+</div>
+<div id="commit-locally" class="section level2">
+<h2>Commit Locally</h2>
+<p><code>git commit -m "Your message about the commit"</code></p>
+</div>
+<div id="branches" class="section level2">
+<h2>Branches</h2>
+<p>Say you want to make a new feature but are worried about making changes to the main project while developing the feature. This is where git branches come in.</p>
+<p>Branches allow you to move back and forth between ‘states’ of a project. For instance, if you want to add a new page to your website you can create a new branch just for that page without affecting the main part of the project. Once you’re done with the page, you can merge your changes from your branch into the master branch. When you create a new branch, Git keeps track of which commit your branch ‘branched’ off of, so it knows the history behind all the files.</p>
+<ol style="list-style-type: decimal">
+<li><code>git checkout -b &lt;my branch name&gt;</code></li>
+<li>Show list of branches: <code>git branch</code></li>
+</ol>
+</div>
+<div id="commit-to-github" class="section level2">
+<h2>Commit to Github</h2>
+<ol style="list-style-type: decimal">
+<li>Create new repo on GitHub</li>
+<li><code>git remote add origin &lt;url produced on github for new repo&gt;</code></li>
+<li><code>git push -u origin [master/main]</code></li>
+</ol>
+</div>
+<div id="push-a-branch-to-github" class="section level2">
+<h2>Push a Branch to Github</h2>
+<p><code>git push origin &lt;my-new-branch&gt;</code></p>
+<p>You might be wondering what that “origin” word means in the command above. What happens is that when you clone a remote repository to your local machine, git creates an alias for you. In nearly all cases this alias is called “origin.” It’s essentially shorthand for the remote repository’s URL. So, to push your changes to the remote repository, you could’ve used either the command: git push <a href="mailto:git@github.com" class="email">git@github.com</a>:git/git.git yourbranchname or git push origin yourbranchname</p>
+</div>
+<div id="pull-request" class="section level2">
+<h2>Pull Request</h2>
+<p>A pull request (or PR) is a way to alert a repo’s owners that you want to make some changes to their code. It allows them to review the code and make sure it looks good before putting your changes on the master branch.</p>
+</div>
+<div id="get-changes-on-github" class="section level2">
+<h2>Get Changes on Github</h2>
+<p><code>git pull origin master</code></p>
+<p>check all new commits: <code>git log</code></p>
+</div>
+<div id="view-differences" class="section level2">
+<h2>View Differences</h2>
+<ol style="list-style-type: decimal">
+<li>run: <code>git diff</code></li>
+</ol>
+</div>
+<div id="remove-a-branch" class="section level2">
+<h2>Remove a Branch</h2>
+<div id="locally" class="section level3">
+<h3>Locally</h3>
+<p><code>git branch -d &lt;branch_name&gt;</code></p>
+</div>
+<div id="remote" class="section level3">
+<h3>Remote</h3>
+<p><code>git push &lt;remote_name&gt; --delete &lt;branch_name&gt;</code></p>
+</div>
+</div>
+<div id="remove-tracked-filedirectory" class="section level2">
+<h2>Remove tracked file/directory</h2>
+<div id="file" class="section level3">
+<h3>File</h3>
+<p><code>git rm --cached &lt;file&gt;</code></p>
+</div>
+<div id="directory" class="section level3">
+<h3>Directory</h3>
+<p><code>git rm --cahced -r dir/</code></p>
+<hr />
+</div>
+</div>
+</div>
 <div id="database-commands" class="section level1">
 <h1>Database Commands</h1>
 <div id="psql" class="section level2">
 <h2>psql</h2>
 <p><a href="https://quickref.me/postgres">Cheat sheet</a> <div id="htmlwidget-ab1c97fd142a608f2372" style="width:100%;height:auto;" class="datatables html-widget"></div>
-<script type="application/json" data-for="htmlwidget-ab1c97fd142a608f2372">{"x":{"filter":"none","data":[["sudo -s postgres psql","postgres=# \\l","postgres=# \\c postgres","postgres=# \\q","psql -d mydb","psql -U john mydb","psql -h localhost -p 5432 mydb","psql -U admin -h 192.168.1.5 -p 2506 -d mydb","psql -W mydb","psql -c '\\c postgres' -c '\\dt'","psql -c \"\\l+\" -H postgres &gt; database.html","psql -l","psql \\dt","psql mydb -f file.sql","psql -V","psql \\df &lt;schema&gt;","psql \\du","psql \\d &lt;table&gt;","psql \\d+ &lt;table&gt;"],["Connect to PostgreSQL as admin","List all databases","Connect to the database named postgres","Disconnect","Connecting to database","Connecting as a specific user","Connecting to a host/port","Connect remote PostgreSQL","Force password","Execute a SQL query or command","Generate HTML report","List all databases","Show all tables in a database","Execute commands from a file","Print the psql version","List functions in schema","Show current user permission","Describe table","Describe table with details"]],"container":"<table class=\"display\">\n  <thead>\n    <tr>\n      <th>Command<\/th>\n      <th>Detail<\/th>\n    <\/tr>\n  <\/thead>\n<\/table>","options":{"paging":false,"order":[],"autoWidth":false,"orderClasses":false}},"evals":[],"jsHooks":[]}</script></p>
-<div id="informational" class="section level3">
-<h3>Informational</h3>
-<table>
-<thead>
-<tr class="header">
-<th>Command</th>
-<th>Detail</th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td><code>\l[+]</code></td>
-<td>List all databases</td>
-</tr>
-<tr class="even">
-<td><code>\dn[S+]</code></td>
-<td>List schemas</td>
-</tr>
-<tr class="odd">
-<td><code>\di[S+]</code></td>
-<td>List indexes</td>
-</tr>
-<tr class="even">
-<td><code>\du[+]</code></td>
-<td>List roles</td>
-</tr>
-<tr class="odd">
-<td><code>\ds[S+]</code></td>
-<td>List sequences</td>
-</tr>
-<tr class="even">
-<td><code>\df[antw][S+]</code></td>
-<td>List functions</td>
-</tr>
-<tr class="odd">
-<td><code>\deu[+]</code></td>
-<td>List user mappings</td>
-</tr>
-<tr class="even">
-<td><code>\dv[S+]</code></td>
-<td>List views</td>
-</tr>
-<tr class="odd">
-<td><code>\dl</code></td>
-<td>List large objects</td>
-</tr>
-<tr class="even">
-<td><code>\dT[S+]</code></td>
-<td>List data types</td>
-</tr>
-<tr class="odd">
-<td><code>\da[S]</code></td>
-<td>List aggregates</td>
-</tr>
-<tr class="even">
-<td><code>\db[+]</code></td>
-<td>List tablespaces</td>
-</tr>
-<tr class="odd">
-<td><code>\dc[S+]</code></td>
-<td>List conversions</td>
-</tr>
-<tr class="even">
-<td><code>\dC[+]</code></td>
-<td>List casts</td>
-</tr>
-<tr class="odd">
-<td><code>\ddp</code></td>
-<td>List default privileges</td>
-</tr>
-<tr class="even">
-<td><code>\dd[S]</code></td>
-<td>Show object descriptions</td>
-</tr>
-<tr class="odd">
-<td><code>\dD[S+]</code></td>
-<td>List domains</td>
-</tr>
-<tr class="even">
-<td><code>\des[+]</code></td>
-<td>List foreign servers</td>
-</tr>
-<tr class="odd">
-<td><code>\dew[+]</code></td>
-<td>List foreign-data wrappers</td>
-</tr>
-<tr class="even">
-<td><code>\dF[+]</code></td>
-<td>List text search configurations</td>
-</tr>
-<tr class="odd">
-<td><code>\dFd[+]</code></td>
-<td>List text search dictionaries</td>
-</tr>
-<tr class="even">
-<td><code>\dFp[+]</code></td>
-<td>List text search parsers</td>
-</tr>
-<tr class="odd">
-<td><code>\dFt[+]</code></td>
-<td>List text search templates</td>
-</tr>
-<tr class="even">
-<td><code>\dL[S+]</code></td>
-<td>List procedural languages</td>
-</tr>
-<tr class="odd">
-<td><code>\do[S]</code></td>
-<td>List operators</td>
-</tr>
-<tr class="even">
-<td><code>\dO[S+]</code></td>
-<td>List collations</td>
-</tr>
-<tr class="odd">
-<td><code>\drds</code></td>
-<td>List per-database role settings</td>
-</tr>
-<tr class="even">
-<td><code>\dx[+]</code></td>
-<td>List extensions</td>
-</tr>
-</tbody>
-</table>
-</div>
-<div id="formatting" class="section level3">
-<h3>Formatting</h3>
-<table>
-<thead>
-<tr class="header">
-<th>Command</th>
-<th>Detail</th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td><code>\a</code></td>
-<td>Toggle between unaligned and aligned</td>
-</tr>
-<tr class="even">
-<td><code>\C [STRING]</code></td>
-<td>Set table title, or unset if none</td>
-</tr>
-<tr class="odd">
-<td><code>\f [STRING]</code></td>
-<td>Show or set field separator for unaligned</td>
-</tr>
-<tr class="even">
-<td><code>\H</code></td>
-<td>Toggle HTML output mode</td>
-</tr>
-<tr class="odd">
-<td><code>\t [on|off]</code></td>
-<td>Show only rows</td>
-</tr>
-<tr class="even">
-<td><code>\T [STRING]</code></td>
-<td>Set or unset HTML &lt;table&gt; tag attributes</td>
-</tr>
-<tr class="odd">
-<td><code>\x [on|off]</code></td>
-<td>Toggle expanded output</td>
-</tr>
-</tbody>
-</table>
-</div>
-<div id="inputoutput" class="section level3">
-<h3>Input/Output</h3>
-<table>
-<thead>
-<tr class="header">
-<th>Command</th>
-<th>Detail</th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td><code>\copy ...</code></td>
-<td>Import/export table</td>
-</tr>
-<tr class="even">
-<td><code>\echo [STRING]</code></td>
-<td>Print string</td>
-</tr>
-<tr class="odd">
-<td><code>\i FILE</code></td>
-<td>Execute file</td>
-</tr>
-<tr class="even">
-<td><code>\o [FILE]</code></td>
-<td>Export all results to file</td>
-</tr>
-<tr class="odd">
-<td><code>\qecho [STRING]</code></td>
-<td>String to output stream</td>
-</tr>
-</tbody>
-</table>
+<script type="application/json" data-for="htmlwidget-ab1c97fd142a608f2372">{"x":{"filter":"none","data":[["sudo -s postgres psql","postgres=# \\l","postgres=# \\c postgres","postgres=# \\q","postgres=# -d mydb","postgres=# -U john mydb","postgres=# -h localhost -p 5432 mydb","postgres=# -U admin -h 192.168.1.5 -p 2506 -d mydb","postgres=# -W mydb","postgres=# -c '\\c postgres' -c '\\dt'","postgres=# -c \"\\l+\" -H postgres &gt; database.html","postgres=# -l","postgres=# \\dt","postgres=# mydb -f file.sql","postgres=# -V","postgres=# \\df &lt;schema&gt;","postgres=# \\du","postgres=# \\d &lt;table&gt;","postgres=# \\d+ &lt;table&gt;","postgres=# \\di","postgres=# \\du","postgres=# \\ds","postgres=# \\copy …","postgres=# \\echo [string]","postgres=# \\i [file]","postgres=# \\o [file]"],["Connect to PostgreSQL as admin","List all databases","Connect to the database named postgres","Disconnect","Connecting to database","Connecting as a specific user","Connecting to a host/port","Connect remote PostgreSQL","Force password","Execute a SQL query or command","Generate HTML report","List all databases","Show all tables in a database","Execute commands from a file","Print the psql version","List functions in schema","Show current user permission","Describe table","Describe table with details","List indexes","List roles","List sequences","Import/export table","Print string","Execute file","Export all results to file"]],"container":"<table class=\"display\">\n  <thead>\n    <tr>\n      <th>Command<\/th>\n      <th>Detail<\/th>\n    <\/tr>\n  <\/thead>\n<\/table>","options":{"paging":false,"order":[],"autoWidth":false,"orderClasses":false}},"evals":[],"jsHooks":[]}</script></p>
+<div id="export-table-to-csv" class="section level3">
+<h3>Export table to CSV</h3>
+<ul>
+<li><code>\copy table TO '&lt;path&gt;' CSV</code></li>
+<li><code>\copy table(col1,col1) TO '&lt;path&gt;' CSV</code></li>
+<li><code>\copy (SELECT...) TO '&lt;path&gt;' CSV</code></li>
+</ul>
 </div>
 <div id="backup" class="section level3">
 <h3>Backup</h3>
@@ -730,14 +640,6 @@ datatable(t2, options=list(paging=FALSE), rownames=F)</code></pre>
 </ul>
 <p>Use pg_restore -? to get the full list of options</p>
 </div>
-</div>
-<div id="export-table-to-csv" class="section level3">
-<h3>Export table to CSV</h3>
-<ul>
-<li><code>\copy table TO '&lt;path&gt;' CSV</code></li>
-<li><code>\copy table(col1,col1) TO '&lt;path&gt;' CSV</code></li>
-<li><code>\copy (SELECT...) TO '&lt;path&gt;' CSV</code></li>
-</ul>
 </div>
 </div>
 </div>
