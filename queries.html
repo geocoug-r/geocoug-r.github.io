@@ -504,6 +504,37 @@ where table_name = &#39;d_location&#39;</code></pre>
 where primary_table = &#39;d_location&#39;</code></pre>
 <hr />
 </div>
+<div id="create-db" class="section level1">
+<h1>Create DB</h1>
+<pre class="sql fold-show"><code>create database &lt;new_db_name&gt; owner &lt;user_or_group&gt; template &lt;name_of_db_to_use_as_template&gt;;
+-- show search_path;
+set search_path to &lt;default_schema&gt;,public;
+create extension if not exists postgis;
+create extension if not exists dblink;
+
+
+-- Database Creation
+-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+create database &lt;new_db_name&gt; owner &lt;user_or_group&gt; template &lt;name_of_db_to_use_as_template&gt;;
+-- show search_path;
+set search_path to idb, public;
+
+grant connect, temporary on database &lt;new_db_name&gt; to public;
+grant all on database &lt;new_db_name&gt; to &lt;user&gt;;
+grant all on database &lt;new_db_name&gt; to &lt;group&gt;;
+
+create extension if not exists postgis;
+create extension if not exists dblink;
+
+create schema staging;
+
+-- Add a unique constraint to e_analyte.full_name and e_analyte.cas_rn so that
+--  no full name or cas_rn can be used for more than one analyte
+-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+alter table e_analyte
+  add constraint uc_fullname unique(full_name),
+  add constraint uc_casrn unique(cas_rn);</code></pre>
+</div>
 <div id="dblink" class="section level1">
 <h1>DBLink</h1>
 <pre class="sql fold-show"><code>select

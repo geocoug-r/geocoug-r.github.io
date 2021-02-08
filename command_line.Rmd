@@ -86,6 +86,47 @@ datatable(t4, options=list(paging=FALSE), rownames=F)
 ```
 
 
+### Server Setup
+Initial Linux server setup on Digital Ocean
+
+1) Login to server as root
+2) `$ adduser <username> sudo`
+  a. Creates new admin user
+3) `$ exit`
+4) Reload SSH connection
+5) Login as new user
+6) `$ sudo vi /etc/ssh/sshd_config`
+  a. Configuration fo rputty/incoming SSH connections
+  b. Change `PermitRootLogin` to `no`
+7) `$ sudo reboot`
+8) On boot, can see linux kernel used for current build/image
+  a. `GNU/Linux 5.4.0-51-generic`
+9) `$ apt list --upgradable`
+10) `$ sudo apt upgrade`
+11) `$ uname -a`
+  a. Shows system info
+  b. Even though you updated the kernel, need to reboot to take effect
+12) `$ sudo reboot`
+13) `$ sudo apt update`
+	a. Just to be sure 
+14) `$ sudo apt upgrade`
+15) `$ ufw`
+	a. *Uncomplicated firewall
+16) `$ sudo ufw status verbose`
+	a. Shows firewall status
+17) `$ sudo ufw help`
+18) `$ sudo ufw allow OpenSSH`
+	a. Will allow opening of ports
+19) `$ sudo ufw enable`
+	a. Turns on firewall
+20) `$ sudo ufw status verbose`
+  a. Shows status of firewall/open ports
+21) Good time for snapshot backup
+	a. Has to be shutdown for backup/snapshot
+22) `$ sudo shutdown -h now`
+You have to go to DigitalOcean and reboot
+
+
 ---
 
 

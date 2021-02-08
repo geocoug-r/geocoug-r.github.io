@@ -487,6 +487,79 @@ datatable(t2, options=list(paging=FALSE), rownames=F)</code></pre>
 <h3>Package Manager</h3>
 <div id="htmlwidget-526ff822b0ccb3b4ceb3" style="width:100%;height:auto;" class="datatables html-widget"></div>
 <script type="application/json" data-for="htmlwidget-526ff822b0ccb3b4ceb3">{"x":{"filter":"none","data":[["apt-get","apt-get install &lt;program&gt;","apt-get remove","apt-cache search &lt;program&gt;*","apt-cache policy &lt;program&gt;","sudo dpkg -i ~/Downloads/&lt;package&gt;.deb","sudo apt-get upgrade"],["Package manager (works with .deb files)","Install a program (if exists in apt-get repository)","Remove a program","Search for a program in repository (* = wildcard)","Check if program is installed","Install .deb file/package","Upgrade all packages"]],"container":"<table class=\"display\">\n  <thead>\n    <tr>\n      <th>Command<\/th>\n      <th>Detail<\/th>\n    <\/tr>\n  <\/thead>\n<\/table>","options":{"paging":false,"order":[],"autoWidth":false,"orderClasses":false}},"evals":[],"jsHooks":[]}</script>
+</div>
+<div id="server-setup" class="section level3">
+<h3>Server Setup</h3>
+<p>Initial Linux server setup on Digital Ocean</p>
+<ol style="list-style-type: decimal">
+<li>Login to server as root</li>
+<li><code>$ adduser &lt;username&gt; sudo</code></li>
+</ol>
+<ol style="list-style-type: lower-alpha">
+<li>Creates new admin user</li>
+</ol>
+<ol start="3" style="list-style-type: decimal">
+<li><code>$ exit</code></li>
+<li>Reload SSH connection</li>
+<li>Login as new user</li>
+<li><code>$ sudo vi /etc/ssh/sshd_config</code></li>
+</ol>
+<ol style="list-style-type: lower-alpha">
+<li>Configuration fo rputty/incoming SSH connections</li>
+<li>Change <code>PermitRootLogin</code> to <code>no</code></li>
+</ol>
+<ol start="7" style="list-style-type: decimal">
+<li><code>$ sudo reboot</code></li>
+<li>On boot, can see linux kernel used for current build/image</li>
+</ol>
+<ol style="list-style-type: lower-alpha">
+<li><code>GNU/Linux 5.4.0-51-generic</code></li>
+</ol>
+<ol start="9" style="list-style-type: decimal">
+<li><code>$ apt list --upgradable</code></li>
+<li><code>$ sudo apt upgrade</code></li>
+<li><code>$ uname -a</code></li>
+</ol>
+<ol style="list-style-type: lower-alpha">
+<li>Shows system info</li>
+<li>Even though you updated the kernel, need to reboot to take effect</li>
+</ol>
+<ol start="12" style="list-style-type: decimal">
+<li><code>$ sudo reboot</code></li>
+<li><code>$ sudo apt update</code>
+<ol style="list-style-type: lower-alpha">
+<li>Just to be sure</li>
+</ol></li>
+<li><code>$ sudo apt upgrade</code></li>
+<li><code>$ ufw</code>
+<ol style="list-style-type: lower-alpha">
+<li>*Uncomplicated firewall</li>
+</ol></li>
+<li><code>$ sudo ufw status verbose</code>
+<ol style="list-style-type: lower-alpha">
+<li>Shows firewall status</li>
+</ol></li>
+<li><code>$ sudo ufw help</code></li>
+<li><code>$ sudo ufw allow OpenSSH</code>
+<ol style="list-style-type: lower-alpha">
+<li>Will allow opening of ports</li>
+</ol></li>
+<li><code>$ sudo ufw enable</code>
+<ol style="list-style-type: lower-alpha">
+<li>Turns on firewall</li>
+</ol></li>
+<li><code>$ sudo ufw status verbose</code></li>
+</ol>
+<ol style="list-style-type: lower-alpha">
+<li>Shows status of firewall/open ports</li>
+</ol>
+<ol start="21" style="list-style-type: decimal">
+<li>Good time for snapshot backup
+<ol style="list-style-type: lower-alpha">
+<li>Has to be shutdown for backup/snapshot</li>
+</ol></li>
+<li><code>$ sudo shutdown -h now</code> You have to go to DigitalOcean and reboot</li>
+</ol>
 <hr />
 </div>
 </div>

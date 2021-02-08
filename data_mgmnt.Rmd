@@ -105,6 +105,12 @@ library(OrgMassSpecR)
 ConvertConcentration(0.031, "wet.to.lipid", 95)
 ```
 
+
+## Qualifiers
+> Labs may apply whatever flags they want to a result.  Some data qualifiers are defined by EPA’s Functional Guidelines documents, which describe how data validation is to be conducted, and the use and interpretation of U, J, and R qualifiers is pretty universal (but older standards for Puget Sound data used E instead of J).  Because the U, J, and R qualifiers are pretty universal and have implications for data usability, they are the only ones that are represented as Boolean fields in the meas_value column.  All lab flags are put into the lab_flags column, and there is no lookup table for them, and there is no defined use for them.  Similarly, the validator qualifiers (U, J, R, and possibly others) are put in the validator_flags column.  If any of those three common qualifiers is in the validator_flags column, then the corresponding flags in meas_value should be set.  The lab_conc_qual column is something of a relic, left over from the days when data were commonly provided in EPA’s Contract Laboratory Program (CLP) data format, which had a corresponding column.  The lab_conc_qual column was meant to either contain “U” or be null.  We don’t ordinarily use that column any more.  Of the qualifiers you listed above, other than U, J, and R, N is commonly used to flag a tentatively identified compound, which means that the analyte code itself is uncertain.  The d_labresult.tic column is meant to hold that information.  The tic column is not part of the measurement_result data type because it is not used in any way during data aggregation (averaging or summing).  I see that Jerry added other flags and qualifiers to the e_concqual table, but needn’t—really shouldn’t—be there.  The e_concqual dictionary should have only “U” defined.  It may seem odd to define a lookup table for only one value when a check constraint on the concentration qualifier columns could be used instead, but it’s easier to check relational constraints than to check check constraints programmatically.
+
+
+
 ## Measurement Basis
 
 ### Wet Weight

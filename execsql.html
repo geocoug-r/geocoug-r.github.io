@@ -421,14 +421,33 @@ div.tocify {
 
 
 <hr />
-<div id="create-linux-executable" class="section level1">
-<h1>Create Linux executable</h1>
-<pre class="sql fold-show"><code>-- !x! rm_file ./test.sh
--- !x! write &quot;!#/bin/bash&quot;             to ./test.sh
--- !x! write &quot;cd somedirectory&quot;        to ./test.sh
--- !x! write &quot;program.py somefile.ext&quot; to ./test.sh
--- !x! system_cmd (chmod +x ./test.sh)
--- !x! system_cmd (./test.sh)</code></pre>
+<div id="linux" class="section level1">
+<h1>Linux</h1>
+<div id="xls2csv-executable" class="section level2">
+<h2>xls2csv executable</h2>
+<pre class="sql fold-show"><code>-- ===Convert template to csv===
+-- !x! sub sh !!$CURRENT_DIR!!/preprocess.sh
+-- !x! rm_file !!sh!!
+-- !x! write &quot;cd source&quot; to !!sh!!
+-- !x! write &quot;xls2csv.py !!FNAME!!&quot; to !!sh!!
+-- !x! system_cmd (chmod +x !!sh!!)
+-- !x! system_cmd (bash !!sh!!)</code></pre>
+</div>
+<div id="remove-csv-rows" class="section level2">
+<h2>Remove csv rows</h2>
+<pre class="sql fold-show"><code>    -- ===Remove rows 1, 3, 4, 5, 6, 7===
+    -- !x! rm_file !!sh!!
+    -- !x! write &quot;cd source&quot; to !!sh!!
+    -- !x! write [cat &quot;!!template_name!!.csv&quot; | sed -e &#39;1d&#39; | sed -e &#39;2d&#39; | sed -e &#39;2d&#39; | sed -e &#39;2d&#39; | sed -e &#39;2d&#39; | sed -e &#39;2d&#39; &gt; !!src_tbl!!.csv] to !!sh!!
+    -- !x! system_cmd (chmod +x !!sh!!)
+    -- !x! system_cmd (bash !!sh!!)
+    -- !x! rm_file !!sh!!</code></pre>
+</div>
+<div id="copy-file" class="section level2">
+<h2>Copy file</h2>
+<pre class="sql fold-show"><code>-- ===Copy file to current working directory===
+-- !x! system_cmd (cp !!FPATH!! !!$CURRENT_DIR!!/source)</code></pre>
+</div>
 </div>
 
 <hr>
