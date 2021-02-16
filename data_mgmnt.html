@@ -574,7 +574,11 @@ ConvertConcentration(0.031, &quot;wet.to.lipid&quot;, 95)</code></pre>
 </div>
 <div id="dry-to-wet" class="section level3">
 <h3>Dry to Wet</h3>
-<span class="math display">\[WetWt = \frac{DryWt * PercentSolids}{100}\]</span>
+<p><span class="math display">\[WetWt = DryWt * \frac{PercentSolids}{100}\]</span></p>
+</div>
+<div id="organic-carbon-normalization" class="section level3">
+<h3>Organic Carbon Normalization</h3>
+<p><span class="math display">\[OCnorm = \frac{DryWt}{\frac{PercentTOC}{100}}\]</span></p>
 <center>
 <strong>DryWt &amp; WetWt</strong> = concentration<br> <strong>PercentSolids</strong> = percentage (no decimal)
 </center>
@@ -606,9 +610,82 @@ ConvertConcentration(0.031, &quot;wet.to.lipid&quot;, 95)</code></pre>
 </div>
 <div id="diagram" class="section level3">
 <h3>Diagram</h3>
-<div class="figure">
-<img src="static/blanks.PNG" alt="" />
-<p class="caption">blanks</p>
+<p><img src="static/blanks.PNG" /></p>
+<hr />
+</div>
+</div>
+<div id="detection-limits" class="section level2">
+<h2>Detection Limits</h2>
+<p><a href="./static/DLs_Demystified.pptx">Presentation</a></p>
+<div id="what-affects-detection-limits" class="section level3">
+<h3>What affects detection limits?</h3>
+<ul>
+<li>Sample size</li>
+<li>Concentration of other constituents</li>
+<li>Sample clean-up</li>
+<li>Methodology</li>
+<li>Lab Performance
+<ul>
+<li>Experience</li>
+<li>Extraction technique</li>
+<li>Instrument type and maintenance</li>
+</ul></li>
+</ul>
+</div>
+<div id="method-detection-limit-mdl" class="section level3">
+<h3>Method Detection Limit (MDL)</h3>
+<ul>
+<li>Statistically determined</li>
+<li>The minimum concentration that can be measured with 99% confidence that the concentration is greater than zero</li>
+<li>Concentrations near MDL are estimates</li>
+<li>Laboratory, instrument, matrix, method, and analyte specific</li>
+<li>Concentrations at MDL expected to be a false positive 1% of the time, but false negatives 50% of the time</li>
+</ul>
+</div>
+<div id="method-reporting-limit-mrl" class="section level3">
+<h3>Method Reporting Limit (MRL)</h3>
+<ul>
+<li>May also be referred to as QL (quantitation limit), sample quantitation limit, or just RL (reporting limit)​</li>
+<li>Determined by the lowest point of the calibration​</li>
+<li>Not as specific as MDL, labs can adust​</li>
+<li>Concentrations at MRL can be reliably quantified​</li>
+<li>MRL &gt; MDL​</li>
+<li>Also laboratory, instrument, matrix, method, &amp; analyte specific</li>
+</ul>
+</div>
+<div id="mdl-mrl-relationship" class="section level3">
+<h3>MDL &amp; MRL Relationship</h3>
+<p><img src="static/MDL_v_MRL.png" /></p>
+</div>
+<div id="other-detection-limits" class="section level3">
+<h3>Other Detection Limits</h3>
+<div id="pql" class="section level4">
+<h4>PQL</h4>
+<ul>
+<li>Considered to be lowest concentration that can be reliably quantified by a method</li>
+<li>Limit of Detection (LOD); Lowest concentration that can be detected with a 1% false negative rate.
+<ul>
+<li>Generally 2x to 3X MDL</li>
+</ul></li>
+<li>Limit of Quantitation (LOQ); similar to MRL</li>
+</ul>
+</div>
+<div id="pcddf-pcb-specific" class="section level4">
+<h4>PCDD/F &amp; PCB specific</h4>
+<p>2.5 times signal to noise</p>
+<ul>
+<li><strong>EQL</strong>: Estimated Quantitation Limit</li>
+<li><strong>EDL</strong>: Estimated Detection Limit</li>
+<li><strong>SDL</strong>: Sample Detection Limit</li>
+<li><strong>EMPC</strong>
+<ul>
+<li>Estimated Maximum Possible Concentration (EMPC)</li>
+<li>Peak present but not all of the identification criteria is met</li>
+<li>Always greater than MDL, may be greater than MRL</li>
+<li>Generally treated a non-detect in TEQ calculations</li>
+<li>EMPCs can present data management difficulties and need to be reviewed in QC checks</li>
+</ul></li>
+</ul>
 </div>
 </div>
 </div>

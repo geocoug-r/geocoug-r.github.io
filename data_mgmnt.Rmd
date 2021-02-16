@@ -164,7 +164,11 @@ ConvertConcentration(0.031, "wet.to.lipid", 95)
 $$DryWt = \frac{WetWt}{Percent Solids} * 100$$
 
 ### Dry to Wet
-$$WetWt = \frac{DryWt * PercentSolids}{100}$$
+$$WetWt = DryWt * \frac{PercentSolids}{100}$$
+
+### Organic Carbon Normalization
+$$OCnorm = \frac{DryWt}{\frac{PercentTOC}{100}}$$
+
 <center>**DryWt & WetWt** = concentration<br>
 **PercentSolids** = percentage (no decimal)</center>
 
@@ -190,6 +194,70 @@ The laboratory blank is a sample of the reagents or sorbents used during the sam
 The reagent blank is a sample of the solvents used during recovery of the sample train after the test is completed.  You recall, reagent blanks for both multi-metal and chromium +6 require that the reagent blank be the same volume as the renses used to recover the samples, from probe to impinger.  This is because the blank value is substracted from the sample to obtain a final concentration.
 
 ### Diagram
-![blanks](./static/blanks.PNG)
+![](./static/blanks.PNG)
 
 
+
+---
+
+
+## Detection Limits
+
+[Presentation](./static/DLs_Demystified.pptx)
+
+### What affects detection limits?
+
+- Sample size
+- Concentration of other constituents
+- Sample clean-up
+- Methodology
+- Lab Performance
+  - Experience
+  - Extraction technique
+  - Instrument type and maintenance
+
+
+### Method Detection Limit (MDL)
+
+- Statistically determined
+- The minimum concentration that can be measured with 99% confidence that the concentration is greater than zero
+- Concentrations near MDL are estimates
+- Laboratory, instrument, matrix, method, and analyte specific
+- Concentrations at MDL expected to be a false positive 1% of the time, but false negatives 50% of the time
+
+
+### Method Reporting Limit (MRL)
+
+- May also be referred to as QL (quantitation limit), sample quantitation limit, or just RL (reporting limit)​
+- Determined by the lowest point of the calibration​
+- Not as specific as MDL, labs can adust​
+- Concentrations at MRL can be reliably quantified​
+- MRL > MDL​
+- Also laboratory, instrument, matrix, method, & analyte specific
+
+
+### MDL & MRL Relationship
+![](./static/MDL_v_MRL.png)
+
+
+### Other Detection Limits
+
+#### PQL
+- Considered to be lowest concentration that can be reliably quantified by a method
+- Limit of Detection (LOD); Lowest concentration that can be detected with a 1% false negative rate.
+  - Generally 2x to 3X MDL
+- Limit of Quantitation (LOQ); similar to MRL
+
+
+#### PCDD/F & PCB specific
+2.5 times signal to noise
+
+- **EQL**: Estimated Quantitation Limit
+- **EDL**: Estimated Detection Limit
+- **SDL**: Sample Detection Limit
+- **EMPC**
+  - Estimated Maximum Possible Concentration (EMPC)
+  - Peak present but not all of the identification criteria is met
+  - Always greater than MDL, may be greater than MRL
+  - Generally treated a non-detect in TEQ calculations
+  - EMPCs can present data management difficulties and need to be reviewed in QC checks
