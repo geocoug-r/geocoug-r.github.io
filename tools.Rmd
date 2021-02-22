@@ -27,6 +27,7 @@ knitr::opts_chunk$set(echo = T, warning = F, message = F)
 - [python-utils](https://www.python-utils.com/) - Playground for Python utilities
 - [Spektran](https://spektran.com/) - Collection of useful color tools
 - [Observable](https://observablehq.com/) - JavaScript notebooks
+- [HTML Dog](https://www.htmldog.com/) - HTML tutorials
 
 ---
 
@@ -34,10 +35,28 @@ knitr::opts_chunk$set(echo = T, warning = F, message = F)
 # Music
 
 - [Songsterr](https://flagrantior.art/) - Guitar tabs
+- [Ultimate Guitar](https://www.ultimate-guitar.com/explore) - Guitar tabs 
 - [Flagrantior](https://flagrantior.art/) - Music theory
+- [musictheory.net](https://www.musictheory.net/) - Music theory
+- [Teoria](https://www.teoria.com/) - Music theory
+- [JustinGuitar](https://www.justinguitar.com/) - Guitar lessons
+- [HowToPlayPiano](https://howtoplaypiano.ca/) - Piano lessons
+- [Soundation](https://soundation.com/) - Broswer based music maker
+
+---
 
 
-<!-- --- -->
+# e-Books
+
+- [Project Gutenberg](https://www.gutenberg.org/)
+- [LibriVox](https://librivox.org/search?primary_key=0&search_category=title&search_page=1&search_form=get_results)
+- [Standard eBooks](https://standardebooks.org/)
 
 
-<!-- # Miscellaneous -->
+---
+
+
+# Miscellaneous
+
+- [Free Learning](https://freelearninglist.org/) - List of free educational resources
+

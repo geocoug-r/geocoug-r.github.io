@@ -486,6 +486,21 @@ div.tocify {
 <h3>Copy file</h3>
 <pre class="sql fold-show"><code>-- ===Copy file to current working directory===
 -- !x! system_cmd (cp !!FPATH!! !!$CURRENT_DIR!!/source)</code></pre>
+</div>
+<div id="create-csv-of-files-in-directory" class="section level3">
+<h3>Create CSV of files in directory</h3>
+<pre class="sql fold-show"><code>echo fname &gt; output.csv | ls &gt;&gt; output.csv</code></pre>
+<hr />
+</div>
+</div>
+<div id="windows" class="section level2">
+<h2>Windows</h2>
+<div id="create-csv-of-files-in-directory-1" class="section level3">
+<h3>Create CSV of files in directory</h3>
+<pre class="sql fold-show"><code>dir /b *.xls &gt; files.csv
+echo fname &gt; head.csv
+type head.csv &gt; output.csv
+type files.csv &gt;&gt; output.csv</code></pre>
 <hr />
 </div>
 </div>
@@ -546,6 +561,18 @@ ConvertConcentration(0.031, &quot;wet.to.lipid&quot;, 95)</code></pre>
 </div>
 <div id="measurement-basis" class="section level2">
 <h2>Measurement Basis</h2>
+<div id="general" class="section level3">
+<h3>General</h3>
+<ul>
+<li>Data for soil and sediment are almost always reported on a dry-weight basis. If there’s anything to indicate a different basis, that deserves a closer look. Almost the only legitimate reason for a different basis for soil or sediment samples is when a leaching procedure has been applied (e.g., the Toxicity Characteristic Leaching Procedure, or TCLP); in those cases the data may be reported as the concentration in the leachate, so the basis may be “Wet” or “Whole” or “Unfiltered” – anything indicating an unfractionated liquid sample.</li>
+<li>Data for tissues should ordinarily be reported in wet weight. Organisms’ homeostasis means that they maintain a nearly constant moisture content in their tissues, whereas the same is not true of materials like soil or sediment. If tissue data are reported in dry weight, check it carefully: labs can be sloppy about that.</li>
+<li>Water data are where things can be complex, because often water samples are filtered or centrifuged to remove particulates, which results in the water samples have a ‘dissolved’ basis. If the particulates are analyzed, and the results are then expressed in terms of the volume of the original sample, then the data will have a ‘particulate’ basis. Unfiltered, or whole, water, should have a basis of ‘Unfilt’, ‘Whole’, or sometimes ‘Wet’. Either of the first two of these are preferred, “Wet” is better used as a counterpart to “Dry” for soil, sediment, or tissue samples.</li>
+<li>There are variations in the way things have been done in different databases. You may find that the measurement basis code for whole water samples differs from one to another, as in the third bullet above.</li>
+<li>IDB v.8 now has the “fraction” code, which is intended to be used to distinguish dissolved, particulate, and whole fractions of a water sample. In IDB v.8, the measurement basis for water samples will almost always be ‘Whole’. Sometimes sediment or soil samples are fractionated too, e.g., by sieving, and the fraction code should be used in those cases too, so the measurement basis will always be ‘dry’ in those cases.</li>
+<li>There is an implicit association between measurement bases and units. For example, if the measurement basis is “Dry”, the units should not be “mg/L” because “…/L” implies a liquid, not a solid.</li>
+<li>The measurement basis refers to the form of the sample material, which is represented in the denominator of concentration units. So codes of “Sediment” “Arsenic”, “mg/kg”, “Dry” should be read as “mg of arsenic per kg of dry sediment.”</li>
+</ul>
+</div>
 <div id="wet-weight" class="section level3">
 <h3>Wet Weight</h3>
 <blockquote>
