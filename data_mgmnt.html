@@ -545,22 +545,41 @@ type files.csv &gt;&gt; output.csv</code></pre>
 <li><a href="http://www.eccsmobilelab.com/resources/literature/?Id=117">http://www.eccsmobilelab.com/resources/literature/?Id=117</a></li>
 <li><a href="./static/EFH-REFS_CHPT10.pdf">Conversions</a></li>
 </ul>
-<div id="r-tool" class="section level2">
-<h2>R tool</h2>
+<div id="qualifiers" class="section level2">
+<h2>Qualifiers</h2>
+<blockquote>
+<p>Labs may apply whatever flags they want to a result. Some data qualifiers are defined by EPA’s Functional Guidelines documents, which describe how data validation is to be conducted, and the use and interpretation of U, J, and R qualifiers is pretty universal (but older standards for Puget Sound data used E instead of J). Because the U, J, and R qualifiers are pretty universal and have implications for data usability, they are the only ones that are represented as Boolean fields in the meas_value column. All lab flags are put into the lab_flags column, and there is no lookup table for them, and there is no defined use for them. Similarly, the validator qualifiers (U, J, R, and possibly others) are put in the validator_flags column. If any of those three common qualifiers is in the validator_flags column, then the corresponding flags in meas_value should be set. The lab_conc_qual column is something of a relic, left over from the days when data were commonly provided in EPA’s Contract Laboratory Program (CLP) data format, which had a corresponding column. The lab_conc_qual column was meant to either contain “U” or be null. We don’t ordinarily use that column any more. Of the qualifiers you listed above, other than U, J, and R, N is commonly used to flag a tentatively identified compound, which means that the analyte code itself is uncertain. The d_labresult.tic column is meant to hold that information. The tic column is not part of the measurement_result data type because it is not used in any way during data aggregation (averaging or summing). I see that Jerry added other flags and qualifiers to the e_concqual table, but needn’t—really shouldn’t—be there. The e_concqual dictionary should have only “U” defined. It may seem odd to define a lookup table for only one value when a check constraint on the concentration qualifier columns could be used instead, but it’s easier to check relational constraints than to check check constraints programmatically.</p>
+</blockquote>
+<hr />
+</div>
+<div id="duplicates" class="section level2">
+<h2>Duplicates</h2>
+<blockquote>
+<p>“Duplicate” is a somewhat ambiguous term, but in practice it most commonly refers to field duplicates, which we ordinarily refer to as splits to avoid that ambiguity. Some QC data, particularly spikes, are frequently duplicated, so when we have lab QC data we may have values for spikes and spike duplicates. When we receive lab results in one big flat table that includes both analytical results for natural samples and results of lab QC samples, the word or code “DUP” in a column header or table cell could mean a couple of different things. Without seeing the original data source, I’m not sure where the “DUP” code in the “labqc_samp” column of your “d_labsample” table came from. I’m going to assume that it refers to a field duplicate, and not a spike duplicate.</p>
+</blockquote>
+<blockquote>
+<p>Ideally, samples are submitted to the laboratory “blind” so that the laboratory does not know which field samples are duplicates of one another. This is to prevent them from seeing that there’s a lot of variation between some pair of duplicates and deciding to re-run one or both of them. If the lab is producing highly variable data, we don’t want them to be able to hide it. Unfortunately, many field sampling programs use a suffix of “-D” or “-DUP” or something like that on the sample ID, so the lab knows which samples are field duplicates. If they know, they may pass that information back in their EDD.</p>
+</blockquote>
+<blockquote>
+<p>Although field duplicates are used as a QC check on laboratory performance, they are not lab QC samples themselves. They are just normal field samples (which have been split), and don’t need to have a laboratory QC sample ID assigned to them. Thus, field duplicates should not be listed in the “d_labqcsamp” table, so that table looks fine as it appears below. The same is true for the “d_labresult” table.</p>
+</blockquote>
+<p>There are a couple of things to be changed about the “d_labsample” table as shown below:</p>
+<ul>
+<li>The values in the “labqc_samp” column should be identifiers that appear in the “d_labqcsamp” table, not codes. The codes for the lab QC type should be in the d_labqcsamp.qc_type column, and neither “Natural” nor “DUP” should be used there.</li>
+<li>The “d_labsample” table should have values in the “study_id” and “sample_no” columns, or a value in the “labqc_samp” column, but not both. There are other invalid combinations of columns also. The “d_labsample” table may have any one of the following tables as a parent: d_sampsplit, d_fldqcsplit, d_labqcsamp, d_bioaccum_samp, d_samptreatsplit, or d_bioasrepsamp. The “ck_one_sample” check constraint on the table enforces this rule. Check constraints like this are not run by the upsert scripts, so a set of staged data may pass all the checks performed by the upsert script and yet the INSERT into d_labsample will fail.</li>
+</ul>
+<hr />
+</div>
+<div id="measurement-basis" class="section level2">
+<h2>Measurement Basis</h2>
+<div id="r-tool" class="section level3">
+<h3>R tool</h3>
 <p><a href="https://www.rdocumentation.org/packages/OrgMassSpecR/versions/0.5-3/topics/ConvertConcentration">OrgMassSpecR</a></p>
 <pre class="r fold-show"><code># install.packages(&quot;OrgMassSpecR&quot;)
 library(OrgMassSpecR)
 ConvertConcentration(0.031, &quot;wet.to.lipid&quot;, 95)</code></pre>
 <pre><code>## [1] 0.03263158</code></pre>
 </div>
-<div id="qualifiers" class="section level2">
-<h2>Qualifiers</h2>
-<blockquote>
-<p>Labs may apply whatever flags they want to a result. Some data qualifiers are defined by EPA’s Functional Guidelines documents, which describe how data validation is to be conducted, and the use and interpretation of U, J, and R qualifiers is pretty universal (but older standards for Puget Sound data used E instead of J). Because the U, J, and R qualifiers are pretty universal and have implications for data usability, they are the only ones that are represented as Boolean fields in the meas_value column. All lab flags are put into the lab_flags column, and there is no lookup table for them, and there is no defined use for them. Similarly, the validator qualifiers (U, J, R, and possibly others) are put in the validator_flags column. If any of those three common qualifiers is in the validator_flags column, then the corresponding flags in meas_value should be set. The lab_conc_qual column is something of a relic, left over from the days when data were commonly provided in EPA’s Contract Laboratory Program (CLP) data format, which had a corresponding column. The lab_conc_qual column was meant to either contain “U” or be null. We don’t ordinarily use that column any more. Of the qualifiers you listed above, other than U, J, and R, N is commonly used to flag a tentatively identified compound, which means that the analyte code itself is uncertain. The d_labresult.tic column is meant to hold that information. The tic column is not part of the measurement_result data type because it is not used in any way during data aggregation (averaging or summing). I see that Jerry added other flags and qualifiers to the e_concqual table, but needn’t—really shouldn’t—be there. The e_concqual dictionary should have only “U” defined. It may seem odd to define a lookup table for only one value when a check constraint on the concentration qualifier columns could be used instead, but it’s easier to check relational constraints than to check check constraints programmatically.</p>
-</blockquote>
-</div>
-<div id="measurement-basis" class="section level2">
-<h2>Measurement Basis</h2>
 <div id="general" class="section level3">
 <h3>General</h3>
 <ul>
@@ -615,6 +634,7 @@ ConvertConcentration(0.031, &quot;wet.to.lipid&quot;, 95)</code></pre>
 <center>
 <img src="static/mass_conv.png" title="fig:" alt="Calcs" />
 </center>
+<hr />
 </div>
 </div>
 <div id="analytical-blanks" class="section level2">
