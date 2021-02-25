@@ -9,6 +9,8 @@ navbar:
       href: rstudio_ref.html
     - text: "Data Management"
       href: data_mgmnt.html
+    - text: "Analytical Chemistry"
+      href: chem.html
     - text: "CLI"
       href: cli.html
     - text: "DBMS"
