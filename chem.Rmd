@@ -12,6 +12,8 @@ library(DT)
 ```
 
 # Resources
+- [Hazardous Waste Test Methods](https://www.epa.gov/hw-sw846/sw-846-compendium)
+- [National Environmental Methods Index](https://www.nemi.gov/home/)
 - [Substance Registry Service](https://iaspub.epa.gov/sor_internet/registry/substreg/LandingPage.do)
 - [EIM Valid Values](https://apps.ecology.wa.gov/eim/help/ValidValues)
 - [Verification and Validation](https://www.epa.gov/sites/production/files/2015-06/documents/g8-final.pdf)
