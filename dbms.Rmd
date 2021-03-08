@@ -294,6 +294,23 @@ SELECT rolname FROM pg_roles;
 SELECT table_schema,table_name FROM information_schema.tables ORDER BY table_schema,table_name;
 ```
 
+
+## List columns in table
+```{sql, eval=F, include=T, class.source='fold-show'}
+SELECT column_name
+FROM   information_schema.columns
+WHERE  table_schema = 'schema'
+AND    table_name = 'table';
+```
+
+## Update From
+```{sql, eval=F, include=T, class.source='fold-show'}
+UPDATE tablename
+SET columnname = someothervalue
+FROM ...
+WHERE ...
+```
+
 ---
 
 # IDB
