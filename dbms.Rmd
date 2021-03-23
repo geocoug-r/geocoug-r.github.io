@@ -311,6 +311,25 @@ FROM ...
 WHERE ...
 ```
 
+## Materialized View
+
+[Reference](https://www.postgresqltutorial.com/postgresql-materialized-views/)
+```{sql, eval=F, include=T, class.source='fold-show'}
+CREATE MATERIALIZED VIEW view_name
+AS
+query
+WITH [NO] DATA;
+```
+
+When you refresh data for a materialized view, PostgreSQL locks the entire table therefore you cannot query data against it. To avoid this, you can use the CONCURRENTLY option.
+
+With CONCURRENTLY option, PostgreSQL creates a temporary updated version of the materialized view, compares two versions, and performs INSERT and UPDATE only the differences.
+```{sql, eval=F, include=T, class.source='fold-show'}
+REFRESH MATERIALIZED VIEW CONCURRENTLY view_name;
+```
+
+
+
 ---
 
 # IDB
