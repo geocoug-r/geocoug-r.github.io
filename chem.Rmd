@@ -39,6 +39,12 @@ dioxfuran <- read_excel(wb, sheet=8)
 # pbde <- read_excel(wb, sheet=9)
 ```
 
+# TEFs
+
+- [Van den Berg source document](./static/TEFs Van den Berg.pdf)
+- [Van den Berg TEF table](./static/TEFs_VanDenBerg.xlsx)
+
+
 # Chemical Groups
 
 ## Dioxin & Furans
